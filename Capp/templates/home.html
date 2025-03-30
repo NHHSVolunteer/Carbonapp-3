@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<!-- Header -->
+<section class="section_header_home">
+  <div class="flex_container">
+    <div class="container_text">
+
+           <h1>Welcome to our website</h1>
+           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Officia natus asperiores ad odio consequuntur odit!</p>
+            <br>
+            <div class="home-container-buttons">
+              <div class="btn">
+                <a href="{{url_for('register.register_home')}}", class="btn btn-primary btn-lg mr-2", style="background-color:#007bff;">Get Started</a>
+              </div> <!-- need to fix this, link doesnt work-->
+
+            </div>
+    </div>
+
+    <div class="container_image">
+      <img src="{{url_for('static', filename='Pictures/Frontpage_picture.jpg')}}" alt="">
+    </div>
+
+    
+
+  </div>
+
+  <div class="flex_container_under">
+
+    <div class="container_image">
+      <img src="{{url_for('static', filename='Pictures/Frontpage_picture.jpg')}}" alt="">
+    </div>
+
+    <div class="container_text">
+
+           <h1>Our Method</h1>
+           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Officia natus asperiores ad odio consequuntur odit!</p>
+            <br>
+            <div class="home-container-buttons">
+              <div class="btn">
+                <a href="{{url_for('methodology.methodology_home')}}", class="btn btn-primary btn-lg mr-2", style="background-color:#007bff;">Methodology</a>
+              </div>
+
+            </div>
+    </div>
+
+  
+
+    
+
+  </div>
+</section> 
+
+        
+{% endblock content %}

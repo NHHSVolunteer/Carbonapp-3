@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="about-us">
+    <h1>Meet Our Team</h1>
+    <div class="about_us_text">
+        <p>We are a diverse team of 7 students from the Norwegian School of Economics (NHH). Together we have developed this 
+            website to create a user-friendly platform to track your carbon emissions from different mode of transportation. Our
+            goal is to create an informative platfirm that allows our users to see their real life emissions, and to make environmental 
+            conscious descisions based upon this info. Read more about our talented group members below. 
+        </p>
+    </div>
+    <div class="container">
+        <!-- Row 1: 4 Profiles -->
+        <div class="profile-card">
+            <img src="{{url_for('static', filename='Pictures/Tran.png')}}" alt="Person 1" class="profile-pic">
+            <h2>Willy Tran</h2>
+            <ul>
+                <li>Info about person 1</li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/willytran/" target="_blank"　class="linkedin">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <img src="{{url_for('static', filename='Pictures/Leo.jpg')}}" alt="Person 2" class="profile-pic">
+            <h2>Leo Saito Ragner</h2>
+            <ul>
+                <li>Info about person 2</li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/leo-saito-ragner-0226b4287/" target="_blank"　class="linkedin">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <img src="{{url_for('static', filename='Pictures/Sexypetter.jpg')}}" alt="Person 3" class="profile-pic">
+            <h2>Petter Mortensen</h2>
+            <ul>
+                <li>Info about person 3</li>
+            </ul>
+            <div class="social-links">
+                <a href="#"　target="_blank" class="linkedin">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <img src="{{url_for('static', filename='Pictures/Yuma.jpg')}}" alt="Person 4" class="profile-pic">
+            <h2>Yuma Obayashi</h2>
+            <ul>
+                <li>Info about person 4</li>
+            </ul>
+            <div class="social-links">
+                <a href="#" target="_blank"　class="linkedin">LinkedIn</a>
+            </div>
+        </div>
+
+        <!-- Row 2: 3 Profiles -->
+        <div class="profile-card">
+            <img src="{{url_for('static', filename='Pictures/Toto.jpg')}}" alt="Person 5" class="profile-pic">
+            <h2>Toto Zhang</h2>
+            <ul>
+                <li>Info about person 5</li>
+            </ul>
+            <div class="social-links">
+                <a href="#"　target="_blank" class="linkedin">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <img src="{{url_for('static', filename='Pictures/Even2.png')}}" alt="Person 6" class="profile-pic">
+            <h2>Erik Granbo Fines</h2>
+            <ul>
+                <li>Info about person 6</li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/erik-granbo-fines-3864b3192/" target="_blank"　class="linkedin">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <img src="{{url_for('static', filename='Pictures/Even.jpg')}}" alt="Person 7" class="profile-pic">
+            <h2>Even Karlsen Trontveit</h2>
+            <ul>
+                <li>Info about person 7</li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/even-karlsen-trontveit-732478249/" target="_blank"　class="linkedin">LinkedIn</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+       
+
+{% endblock content %}

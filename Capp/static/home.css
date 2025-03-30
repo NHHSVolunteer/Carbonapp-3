@@ -1,0 +1,112 @@
+.flex_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Øker bredden for mer luft */
+  margin: 20px auto; /* Mer mellomrom øverst */
+  gap: 90px; /* Øker avstanden mellom tekst og bilde */
+  padding: 40px;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.container_text {
+  width: 45%;
+}
+
+.container_text h1 {
+  font-size: 48px; /* Øker tittelstørrelsen */
+  font-weight: bold;
+  line-height: 1.2;
+  color: #2f3e2f;
+  text-align: center;
+}
+
+.container_text p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #4A5C40; /* Litt mørkere grønn tekst */
+}
+
+.container_image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.container_image img {
+  width: 100%;
+  max-width: 600px; 
+  height: 300px;
+  height: auto;
+  border-radius: 25px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.flex_container_under {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; 
+  margin: 20px auto; 
+  gap: 35px; 
+  padding: 40px;
+  padding-top: 72px;
+  padding-bottom: 70px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  
+.flex_container, .flex_container_under {
+      flex-direction: column; /* Endrer fra rad til kolonne */
+      text-align: center;
+      align-items: center;
+      gap: 40px;
+      padding: 20px;
+  }
+
+  .container_text, .container_image {
+      width: 90%; /* Gjør innholdet bredere på mobil */
+  }
+
+  .container_text h1 {
+      font-size: 32px; /* Reduser tittelstørrelse */
+  }
+
+  .container_text p {
+      font-size: 16px; /* Mindre avsnittstekst */
+  }
+
+  .container_image img {
+      max-width: 100%; /* Sørger for at bildet ikke blir for stort */
+}
+
+.container_image {
+  order: 2;
+}
+
+.container_text {
+  order: 1;
+}
+
+
+
+}
+
+/* 🔹 Ekstra tilpasning for veldig små skjermer (f.eks. iPhone 5) */
+@media (max-width: 600px) {
+  .text-content h1 {
+      font-size: 28px;
+  }
+
+  .text-content p {
+      font-size: 14px;
+  }
+
+  .cta-btn {
+      font-size: 14px;
+      padding: 12px;
+  }
+}
