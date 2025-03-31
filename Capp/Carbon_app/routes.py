@@ -28,13 +28,13 @@ efch4={'Bus':{'Diesel':2e-5,'CNG':2.5e-3,'Petrol':2e-5,'No Fossil Fuel':0},
 
 #Carbon app, main page
 @carbon_app.route('/carbon_app')
-@login_required
+# @login_required
 def carbon_app_home():
     return render_template('carbon_app/carbon_app.html', title='carbon_app')
 
 #New entry bus
 @carbon_app.route('/carbon_app/new_entry_bus', methods=['GET','POST'])
-@login_required
+# @login_required
 def new_entry_bus():
     form = BusForm()
     if form.validate_on_submit():
@@ -60,7 +60,7 @@ def new_entry_bus():
 
 #New entry car
 @carbon_app.route('/carbon_app/new_entry_car', methods=['GET','POST'])
-@login_required
+# @login_required
 def new_entry_car():
     form = CarForm()
     if form.validate_on_submit():
@@ -86,7 +86,7 @@ def new_entry_car():
 
 #New entry plane
 @carbon_app.route('/carbon_app/new_entry_plane', methods=['GET','POST'])
-@login_required
+# @login_required
 def new_entry_plane():
     form = PlaneForm()
     if form.validate_on_submit():
@@ -112,7 +112,7 @@ def new_entry_plane():
 
 #New entry ferry
 @carbon_app.route('/carbon_app/new_entry_ferry', methods=['GET','POST'])
-@login_required
+# @login_required
 def new_entry_ferry():
     form = FerryForm()
     if form.validate_on_submit():
@@ -138,7 +138,7 @@ def new_entry_ferry():
 
 #New entry motorbike
 @carbon_app.route('/carbon_app/new_entry_motorbike', methods=['GET','POST'])
-@login_required
+# @login_required
 def new_entry_motorbike():
     form = MotorbikeForm()
     if form.validate_on_submit():
@@ -164,7 +164,7 @@ def new_entry_motorbike():
 
 #New entry bicycle
 @carbon_app.route('/carbon_app/new_entry_bicycle', methods=['GET','POST'])
-@login_required
+# @login_required
 def new_entry_bicycle():
     form = BicycleForm()
     if form.validate_on_submit():
@@ -190,7 +190,7 @@ def new_entry_bicycle():
 
 #New entry walk
 @carbon_app.route('/carbon_app/new_entry_walk', methods=['GET','POST'])
-@login_required
+# @login_required
 def new_entry_walk():
     form = WalkForm()
     if form.validate_on_submit():
@@ -216,7 +216,7 @@ def new_entry_walk():
 
 #Your data
 @carbon_app.route('/carbon_app/your_data')
-@login_required
+# @login_required
 def your_data():
     #Table
     entries = Transport.query.filter_by(author=current_user). \
