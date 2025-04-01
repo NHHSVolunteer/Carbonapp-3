@@ -1,6 +1,8 @@
 from flask import render_template, Blueprint
-register=Blueprint('register',__name__)
+from Capp.users.forms import RegistrationForm  # or wherever your form is
+register = Blueprint('register', __name__)
 
-@register.route('/register')
+@register.route('/register', methods=['GET', 'POST'])
 def register_home():
-  return render_template('/Registration/register.html', title='register')
+    form = RegistrationForm()  # ← create the form object
+    return render_template('Registration/register.html', title='register', form=form)
