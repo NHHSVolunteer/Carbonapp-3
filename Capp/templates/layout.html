@@ -17,8 +17,7 @@
               href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
             />
             
-
-            
+        
             <!-- CSS code -->
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
@@ -39,31 +38,31 @@
         {% endif %}
         
     </head>
+
     <body>
         <div class="navbar">
             <div class="header_logo">
-                <a href="{{url_for('home.home_home')}}"> <img src="{{url_for('static', filename='Pictures/Ecofriend_logo.jpg')}}" alt=""></a>
+              <a href="{{url_for('home.home_home')}}">
+                <img src="{{url_for('static', filename='Pictures/Ecofriend_logo.jpg')}}" alt="">
+              </a>
             </div>
-            <ul>
-                <li>
-                    <a href="{{url_for('About_us.About_us_home')}}">About Us</a>
-                </li>
-                <li>
-                    <a href="{{url_for('methodology.methodology_home')}}">Methodology</a>
-                </li>
-                <li>
-                    <a href="{{url_for('carbon_app.carbon_app_home')}}">Carbon App</a>
-                </li>
-                <li>
-                    <a href="{{url_for('users.register')}}">Register</a>
-                </li>
-            </ul>
-
-            <div class="mobile_navbar">
-                <i class="fa-solid fa-outdent"></i>
+          
+            <!-- Navigation Links -->
+            <div id="nav-links">
+              <ul>
+                <li><a href="{{url_for('About_us.About_us_home')}}">About Us</a></li>
+                <li><a href="{{url_for('methodology.methodology_home')}}">Methodology</a></li>
+                <li><a href="{{url_for('Carbon_app.carbon_app')}}">Carbon App</a></li>
+                <li><a href="{{url_for('register.register_home')}}">Register</a></li>
+              </ul>
+              <i id="close" class="fa fa-times"></i>
             </div>
-    
-        </div>
+          
+            <!-- Mobile Hamburger Icon -->
+            <div id="mobile">
+              <i id="bar" class="fa fa-bars"></i>
+            </div>
+          </div>
 
         
         
@@ -85,6 +84,30 @@
         </footer>
         
         
-        
     </body>
+
+
+    <script>
+        const bar = document.getElementById("bar");
+        const close = document.getElementById("close");
+        const navLinks = document.getElementById("nav-links");
+      
+        if (bar) {
+          bar.addEventListener("click", () => {
+            navLinks.classList.add("active");
+            document.body.style.overflow = "hidden"; // prevent background scroll
+          });
+        }
+      
+        if (close) {
+          close.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            document.body.style.overflow = "";
+          });
+        }
+      </script>
+      
 </html>
+
+        
+        
