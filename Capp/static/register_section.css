@@ -1,0 +1,12 @@
+/* Egendefinert klasse for å flytte submit-knappen litt ned */
+.submit-margin {
+    margin-top: 20px; /* Juster verdien etter behov */
+  }
+  
+  /* Klasse for å kontrollere bredden på skjemaet og sentrere det */
+  .form-wrapper {
+    max-width: 900px;  /* Juster maks-bredden etter ønske */
+    min-width: 500px;  /* Valgfritt, for å unngå at det blir for smalt */
+    margin: 0 auto;    /* Sentrer boksen horisontalt */
+  }
+  
