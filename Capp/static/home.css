@@ -1,4 +1,4 @@
-.flex_container {
+.flex_container_welcome {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,6 +8,7 @@
   padding: 40px;
   padding-top: 80px;
   text-align: center;
+  background-color: greenyellow;
 }
 
 .container_text {
@@ -44,7 +45,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
-.flex_container_under {
+.flex_container_mission {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,16 +56,43 @@
   padding-top: 72px;
   padding-bottom: 70px;
   text-align: center;
+  background-color: azure;
+}
+
+.flex_container_methodology {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; 
+  margin: 20px auto; 
+  gap: 35px; 
+  padding: 40px;
+  padding-top: 72px;
+  padding-bottom: 70px;
+  text-align: center;
+  background-color: tomato;
+}
+
+.flex_container_aboutUs {
+  display: flex;
+  align-items: center;
+  max-width: 1200px; 
+  margin: 20px auto; 
+  gap: 35px; 
+  padding: 40px;
+  padding-top: 72px;
+  padding-bottom: 70px;
+  text-align: center;
+  background-color: plum;
 }
 
 @media (max-width: 768px) {
   
-.flex_container, .flex_container_under {
+.flex_container, .flex_container_methodology, .flex_container_mission, .flex_container_aboutUs {
       flex-direction: column; /* Endrer fra rad til kolonne */
       text-align: center;
       align-items: center;
       gap: 40px;
-      padding: 20px;
   }
 
   .container_text, .container_image {
@@ -110,3 +138,91 @@
       padding: 12px;
   }
 }
+
+about-us h1 {
+  font-size: 28px;
+  margin-bottom: 22px;
+  color: #4d4d4d;
+}
+
+.about-us p {
+  padding-bottom: 15px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+.container .profile-card:nth-child(n+5) {
+  grid-column: span 1;
+}
+
+.container::after {
+  content: "";
+  grid-column: 2 / span 1;
+}
+
+
+.profile-card {
+  background-color: #AFCB98 ; /* Alternatively #C8D9B8 (same as footer) */
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+} 
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 15px;
+  color: #f5f5f5;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-links a {
+  background-color: burlywood;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.social-links a:hover {
+  background-color: #5A6B50;
