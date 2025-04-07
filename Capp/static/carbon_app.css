@@ -80,3 +80,15 @@
     display: inline-block;
   }
   
+  /* Egendefinert klasse for å flytte submit-knappen litt ned */
+.submit-margin {
+    margin-top: 20px; /* Juster verdien etter behov */
+  }
+  
+  /* Eksempel på eksisterende CSS for .form-wrapper hvis du ikke har denne definert enda */
+  .form-wrapper {
+    max-width: 900px;
+    min-width: 500px;
+    margin: 0 auto; /* Sentere boksen horisontalt */
+  }
+  

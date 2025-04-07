@@ -1,70 +1,67 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<section class="new_entry">
-  <div class="container">
-      <div class="box">
-
-      </div>
-      <div class="box">   
-        <div class="h1 mb-3" style="text-align: center;">
-          <i class="fa-solid fa-bus"></i>
-        </div>
-        <h3>Bus</h3>
-        <p>
-          <ol style="text-align: left;">
-            <li>
-              Please, enter the number of kilometers.
-            </li>
-            <li>
-              Please, select the type of fuel
-            </li>
-          </ol>
-        </p>
+<section class="new_entry py-5">
+  <!-- Bruker container-fluid for å utnytte hele bredden -->
+  <div class="container-fluid">
+    <!-- Rad som sentrerer innholdet horisontalt -->
+    <div class="row justify-content-center">
+      <!-- Kolonne med responsiv bredde -->
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="box p-4 form-wrapper">
+          <!-- Sentrert ikon for Bus -->
+          <div class="text-center mb-3">
+            <i class="fa-solid fa-bus fa-3x"></i>
+          </div>
+          <!-- Tittel -->
+          <h3 class="text-center mb-3">Bus</h3>
+          <!-- Beskrivelse -->
+          <p>
+            <ol style="text-align: left;">
+              <li>Please, enter the number of kilometers.</li>
+              <li>Please, select the type of fuel.</li>
+            </ol>
+          </p>
+          <!-- Skjema -->
           <form method="POST" action="">
-              {{ form.csrf_token }}
-              <fieldset class="form-group">
-
-                <div class="form-group">
-                    {{ form.kms.label(class="form-control-label") }}
-                    {% if form.kms.errors %}
-                        {{ form.kms(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.kms.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.kms(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-
-                <div class="form-group">
-                    {{ form.fuel_type.label(class="form-control-label") }}
-                    {% if form.fuel_type.errors %}
-                        {{ form.fuel_type(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.fuel_type.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.fuel_type(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-
-              </fieldset>
-              </br>
+            {{ form.csrf_token }}
+            <fieldset class="form-group">
               <div class="form-group">
-                {{ form.submit(class="btn_carbon_app_new_entry_main") }}
+                {{ form.kms.label(class="form-control-label") }}
+                {% if form.kms.errors %}
+                  {{ form.kms(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.kms.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ form.kms(class="form-control form-control-lg") }}
+                {% endif %}
               </div>
+              <div class="form-group">
+                {{ form.fuel_type.label(class="form-control-label") }}
+                {% if form.fuel_type.errors %}
+                  {{ form.fuel_type(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.fuel_type.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ form.fuel_type(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+            </fieldset>
+            <!-- Submit-knappen med egendefinert CSS-klasse for ekstra margin-top -->
+            <div class="form-group">
+              {{ form.submit(class="btn btn-primary btn-lg btn-block submit-margin") }}
+            </div>
           </form>
+        </div>
       </div>
-      <div class="box">
-
-      </div>
+    </div>
   </div>
-</section> 
+</section>
 
-        
 {% endblock content %}
