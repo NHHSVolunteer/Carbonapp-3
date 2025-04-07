@@ -1,85 +1,94 @@
-/* Full-Width Header Section */
+/* HEADER-SEKSJON (uendret) */
 .section_header_carbon_app {
-    background-color: #E6E9D3; /* Set a light green background for the header */
-    padding: 40px 0;         /* Add 40px padding to the top and bottom */
-}
+    background-color: #E6E9D3;
+    padding: 40px 0;
+    margin-bottom: 40px;
+  }
+  .header_container {
+    padding: 0 20px;
+  }
+  .header_carbon_app {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .header_text {
+    flex: 1 1 500px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .header_text h1 {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: #2a4359;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header_buttons {
+    display: flex;
+    gap: 30px;
+  }
+  .btn_wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .header_image {
+    flex: 0 1 400px;
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  .header_image img {
+    max-width: 350px;
+    height: auto;
+    display: inline-block;
+  }
   
-/* Use container-fluid for full width */
-.header_container {
-    padding: 0 20px;         /* Add 20px padding to the left and right (adjust as needed) */
-}
+  /* NEW ENTRY-SEKSJON */
+  .section_carbon_app_new_entry_main {
+    padding: 40px 0;
+    background-color: #f0f0f0;
+  }
+  .box {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  .box:hover {
+    transform: translateY(-5px);
+  }
+  .box .icon {
+    margin-bottom: 20px;
+    color: #007bff;
+  }
+  .box h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  .box p {
+    margin-bottom: 20px;
+  }
+  .box a.btn {
+    margin-top: 10px;
+    display: inline-block;
+  }
   
-/* Flex layout for header content */
-.header_carbon_app {
-    display: flex;                 /* Activate Flexbox layout for the header content */
-    align-items: center;           /* Vertically center the child elements */
-    justify-content: space-between;/* Distribute space evenly between the left and right columns */
-    flex-wrap: wrap;               /* Allow items to wrap to the next line on smaller screens */
-}
+  /* Egendefinert klasse for å flytte submit-knappen litt ned */
+.submit-margin {
+    margin-top: 20px; /* Juster verdien etter behov */
+  }
   
-/* Left Column: Text & Buttons */
-.header_text {
-    flex: 1 1 500px;             /* Grow and shrink as needed with a base width of 500px */
-    margin-bottom: 20px;         /* Add spacing below the text for separation */
-    text-align: left;            /* Left-align the text */
-}
+  /* Eksempel på eksisterende CSS for .form-wrapper hvis du ikke har denne definert enda */
+  .form-wrapper {
+    max-width: 900px;
+    min-width: 500px;
+    margin: 0 auto; /* Sentere boksen horisontalt */
+  }
   
-.header_text h1 {
-    font-size: 50px;             /* Set the title font size to 50px */
-    margin-bottom: 15px;         /* Add 15px space below the title */
-    color: #2a4359;              /* Set a dark blue color for the title */
-    white-space: nowrap;         /* Prevent the title from wrapping to multiple lines */
-    overflow: hidden;            /* Hide any overflow text */
-    text-overflow: ellipsis;     /* Display an ellipsis if the title text overflows */
-}
-  
-.header_text p {
-    font-size: 16px;             /* Set the paragraph font size to 16px */
-    line-height: 1.6;            /* Increase line height for better readability */
-    margin-bottom: 20px;         /* Add 20px spacing below the paragraph */
-    color: #333;                 /* Set the paragraph text color to dark gray */
-}
-  
-/* Buttons Row: Equal-Sized Buttons, Centered Text */
-.header_buttons {
-    display: flex;               /* Use Flexbox to layout the buttons in a row */
-    gap: 30px;                   /* Set a 30px gap between each button */
-}
-  
-.btn_wrapper {
-    flex: 0 auto;               /* Prevent the button wrapper from growing or shrinking */
-    white-space: nowrap;        /* Prevent the button text from wrapping */
-    display: inline-flex;       /* Use inline-flex to allow flex properties on inline elements */
-    align-items: center;        /* Vertically center the content within the button */
-    justify-content: center;    /* Horizontally center the content within the button */
-    text-align: center;         /* Center-align the text inside the button */
-}
-  
-/* Right Column: Larger Image */
-.header_image {
-    flex: 0 1 400px;           /* Do not grow, allow shrink, and set the base width to 400px */
-    text-align: right;         /* Align the image to the right side of its container */
-    margin-bottom: 20px;       /* Add spacing below the image */
-}
-  
-.header_image img {
-    max-width: 350px;          /* Set the maximum width of the image to 350px (adjust for a larger image if needed) */
-    height: auto;              /* Maintain the image's aspect ratio */
-    display: inline-block;     /* Display the image as an inline-block element */
-}
-  
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .header_carbon_app {
-      flex-direction: column;   /* Stack header columns vertically on small screens */
-      align-items: flex-start;   /* Left-align the stacked items */
-    }
-    .header_text,
-    .header_image {
-      width: 100%;              /* Make both columns full width */
-      margin-bottom: 20px;      /* Maintain a 20px margin at the bottom for spacing */
-    }
-    .header_image {
-      text-align: center;       /* Center the image on small screens */
-    }
-}
