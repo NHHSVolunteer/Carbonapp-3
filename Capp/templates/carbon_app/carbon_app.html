@@ -1,133 +1,166 @@
 {% extends "layout.html" %}
 {% block content %}
 
-    <!-- Header -->
-    <section class="section_header_carbon_app">
-        <div class="container">
-    
-        <div class="header_carbon_app">
-            <div class="box"> 
-            <h1 style="font-size:55px;"><span class="text-logo"> Carbon App Calculator</span></h1>
-            <p style="text-align:left;">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat dolores quos asperiores repellendus facilis cum illo aperiam odit doloremque nostrum. Totam excepturi labore voluptatibus iusto sapiente quisquam consectetur optio magnam voluptates omnis vel officia alias distinctio quas laborum reiciendis ratione inventore veniam, cupiditate doloribus dolore, eius natus a. Magni inventore consequuntur voluptas reprehenderit perferendis! Molestias aspernatur rem autem aut temporibus.
-            </p>
-            <div class="container_buttons_links_header_carbon_app">
-                <div class="btn">
-                    <a href="{{url_for('methodology.methodology_home')}}" class="btn btn-primary btn-lg mr-2", style="background-color:#007bff;">Methodology</a>
-                </div>
-                <div class="btn">
-                    <a href="{{url_for('carbon_app.your_data')}}" class="btn btn-primary btn-lg mr-2", style="background-color:#007bff;">Your data</a>
-                </div>
-            </div>  
-            </div>
-            <div class="box">
-            <img 
-                src="{{url_for('static', filename='icons/calculator.svg')}}"
-                width="325" 
-                height="325"
-                alt=""/>
-            </div>
-        </div>
-        
-        </div>
-    </section> 
+<!-- Load Bootstrap CSS from CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- carbon_app_new_entry_main -->
-    <section class="section_carbon_app_new_entry_main">
-    <div class="container">
-  
-      <div class="carbon_app_new_entry_main" style="display:block;">
-        <br>
-        <h3 style="text-align:center;">Please, select your mean of conveyance in the boxes below</h3>     
-      </div>
-  
-      <div class="carbon_app_new_entry_main">
-          <div class="box">
-            <div class="h1 mb-3" style="text-align: center;">
-                <i class="fa-solid fa-bus"></i>
-            </div>
-            <h3>Bus</h3>
-            <p>Please, enter your kilometers by using the bus.
-            </p>
-            <div class="section_container_buttons_carbon_app_new_entry_main">
-              <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_bus')}}">New Entry</a>
-            </div> 
+<!-- Full-Width Header Section -->
+<section class="section_header_carbon_app">
+  <!-- Use container-fluid to span the full width of the viewport -->
+  <div class="container-fluid header_container">
+    <div class="header_carbon_app">
+      <!-- Left Column: Contains text content and buttons -->
+      <div class="header_text">
+        <!-- Main title for the header -->
+        <h1>Carbon App Calculator</h1>
+        <!-- Descriptive paragraph below the title -->
+        <p>
+          Our app empowers you to reduce your carbon emissions by delivering actionable insights on your
+          transportation choices. It offers a way to log your carbon-emitting trips and gives you personal
+          footprint comparisons to help you make smarter, sustainable decisions. You can also use the quick-log
+          function to help you quickly log recurring trips.
+        </p>
+        <!-- Row of buttons -->
+        <div class="header_buttons">
+          <!-- Button wrapper for equal spacing -->
+          <div class="btn_wrapper">
+            <!-- Button linking to the methodology page -->
+            <a href="{{ url_for('methodology.methodology_home') }}" class="btn btn-primary btn-lg" style="background-color:#007bff;">
+              Methodology
+            </a>
           </div>
-          <div class="box">
-            <div class="h1 mb-3" style="text-align: center;">
-                <i class="fa-solid fa-car"></i>
-            </div>
-            <h3>Car</h3>
-            <p>Please, enter your kilometers by using the car.
-            </p>
-            <div class="section_container_buttons_carbon_app_new_entry_main">
-              <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_car')}}">New Entry</a>
-            </div> 
-          </div>           
-          <div class="box">
-            <div class="h1 mb-3" style="text-align: center;">
-                <i class="fa-solid fa-plane"></i>
-            </div>
-            <h3>Plane</h3>
-            <p>Please, enter your kilometers by using the plane.
-            </p>
-            <div class="section_container_buttons_carbon_app_new_entry_main">
-              <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_plane')}}">New Entry</a>
-            </div> 
+          <div class="btn_wrapper">
+            <!-- Button linking to the "Your Data" page -->
+            <a href="{{ url_for('carbon_app.your_data') }}" class="btn btn-primary btn-lg" style="background-color:#007bff;">
+              Your Data
+            </a>
           </div>
-          <div class="box">
-            <div class="h1 mb-3" style="text-align: center;">
-                <i class="fa-solid fa-ship"></i>
-            </div>
-            <h3>Ferry</h3>
-            <p>Please, enter your kilometers by using the ferry.
-            </p>
-            <div class="section_container_buttons_carbon_app_new_entry_main">
-              <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_ferry')}}">New Entry</a>
-            </div> 
-          </div>      
-      </div>
-
-      <div class="carbon_app_new_entry_main">
-        <div class="box">
-          <div class="h1 mb-3" style="text-align: center;">
-            <i class="fa-solid fa-motorcycle"></i>
+          <div class="btn_wrapper">
+            <!-- Button to trigger the instructions modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#instructionsModal" style="background-color:#007bff;">
+              Instructions
+            </button>
           </div>
-          <h3>Motorbike</h3>
-          <p>Please, enter your kilometers by using the motocycle.
-          </p>
-          <div class="section_container_buttons_carbon_app_new_entry_main">
-            <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_motorbike')}}">New Entry</a>
-          </div> 
-        </div>    
-        <div class="box">
-          <div class="h1 mb-3" style="text-align: center;">
-            <i class="fa-solid fa-bicycle"></i>
-          </div>
-          <h3>Bicycle</h3>
-          <p>Please, enter your kilometers by using the bicycle.
-          </p>
-          <div class="section_container_buttons_carbon_app_new_entry_main">
-            <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_bicycle')}}">New Entry</a>
-          </div> 
         </div>
-        <div class="box">
-          <div class="h1 mb-3" style="text-align: center;">
-            <i class="fa-solid fa-person-walking"></i>
-          </div>
-          <h3>Walk</h3>
-          <p>Please, enter your kilometers by walking.
-          </p>
-          <div class="section_container_buttons_carbon_app_new_entry_main">
-            <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_walk')}}">New Entry</a>
-          </div> 
-        </div> 
-        <div class="box" style="background-color:#c5c8d9;">
-        </div>      
+      </div>
+      <!-- Right Column: Displays the calculator image -->
+      <div class="header_image">
+        <img src="{{ url_for('static', filename='icons/calculator.svg') }}" alt="Calculator Icon">
+      </div>
     </div>
+  </div>
   
-    </div>          
-    </section>
-       
+  <!-- Modal for Instructions -->
+  <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- Modal Header with Title and Close Button -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Modal Body: Contains the instructions text -->
+        <div class="modal-body">
+          <p>Hei hei hei</p>
+        </div>
+        <!-- Modal Footer: Contains the close button -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section for New Entry: Options for different modes of conveyance -->
+<section class="section_carbon_app_new_entry_main">
+  <div class="container">
+    <!-- Title for the conveyance selection section -->
+    <div class="carbon_app_new_entry_main" style="display:block;">
+      <br>
+      <h3 style="text-align:center;">Please, select your mean of conveyance in the boxes below</h3>
+    </div>
+
+    <!-- Row of transport option boxes -->
+    <div class="carbon_app_new_entry_main">
+      <!-- Bus Option -->
+      <div class="box">
+        <div class="h1 mb-3" style="text-align: center;">
+          <i class="fa-solid fa-bus"></i>
+        </div>
+        <h3>Bus</h3>
+        <p>Please, enter your kilometers by using the bus.
+        </p>
+        <div class="section_container_buttons_carbon_app_new_entry_main">
+          <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_bus')}}">New Entry</a>
+        </div>
+      </div>
+      <!-- Car Option -->
+      <div class="box">
+        <div class="h1 mb-3" style="text-align: center;">
+          <i class="fa-solid fa-car"></i>
+        </div>
+        <h3>Car</h3>
+        <p>Please, enter your kilometers by using the car.
+        </p>
+        <div class="section_container_buttons_carbon_app_new_entry_main">
+          <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_car')}}">New Entry</a>
+        </div>
+      </div>
+      <!-- Plane Option -->
+      <div class="box">
+        <div class="h1 mb-3" style="text-align: center;">
+          <i class="fa-solid fa-plane"></i>
+        </div>
+        <h3>Plane</h3>
+        <p>Please, enter your kilometers by using the plane.
+        </p>
+        <div class="section_container_buttons_carbon_app_new_entry_main">
+          <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_plane')}}">New Entry</a>
+        </div>
+      </div>
+      <!-- Ferry Option -->
+      <div class="box">
+        <div class="h1 mb-3" style="text-align: center;">
+          <i class="fa-solid fa-ship"></i>
+        </div>
+        <h3>Ferry</h3>
+        <p>Please, enter your kilometers by using the ferry.
+        </p>
+        <div class="section_container_buttons_carbon_app_new_entry_main">
+          <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_ferry')}}">New Entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second row for additional options (e.g., Motorbike) -->
+    <div class="carbon_app_new_entry_main">
+      <!-- Motorbike Option -->
+      <div class="box">
+        <div class="h1 mb-3" style="text-align: center;">
+          <i class="fa-solid fa-motorcycle"></i>
+        </div>
+        <h3>Motorbike</h3>
+        <p>Please, enter your kilometers by using the motocycle.
+        </p>
+        <div class="section_container_buttons_carbon_app_new_entry_main">
+          <a class="btn_carbon_app_new_entry_main" href="{{url_for('carbon_app.new_entry_motorbike')}}">New Entry</a>
+        </div>
+      </div>
+      <!-- Additional options such as Bicycle or Walk could be added here -->
+    </div>
+  </div>
+</section>
+
+<!-- Bootstrap and dependencies JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 {% endblock content %}
