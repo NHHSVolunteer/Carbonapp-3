@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     transport = db.relationship('Transport', backref='author', lazy=True)
+    saved_trips = db.relationship('SavedTrip', backref='author', lazy=True)  # Ny relasjon
 
 # Database Transport
 class Transport(db.Model):
@@ -24,7 +25,18 @@ class Transport(db.Model):
     transport = db.Column(db.String)
     fuel = db.Column(db.String)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    co2= db.Column(db.Float)
-    ch4= db.Column(db.Float)
-    total = db.Column(db.Float)  
+    co2 = db.Column(db.Float)
+    ch4 = db.Column(db.Float)
+    total = db.Column(db.Float)
     user_id = db.Column(db.Integer, db.ForeignKey('user_table.id'), nullable=False)
+
+class SavedTrip(db.Model):
+    __tablename__ = 'saved_trip'
+    id = db.Column(db.Integer, primary_key=True)
+    trip_name = db.Column(db.String(100), nullable=False)
+    transport = db.Column(db.String(50), nullable=False)
+    fuel = db.Column(db.String(50), nullable=False)
+    kms = db.Column(db.Float, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user_table.id'), nullable=False)
+
+

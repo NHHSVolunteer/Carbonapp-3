@@ -1,30 +1,24 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, SelectField, FloatField
-from wtforms.validators import InputRequired
+from wtforms import SubmitField, SelectField, FloatField, BooleanField, StringField
+from wtforms.validators import InputRequired, Optional, Length
 
-class BusForm(FlaskForm):
-    kms = FloatField('Kilometers', [InputRequired()])
-    fuel_type = SelectField('Bus type', [InputRequired()], 
-        choices=[
-            ('City bus', 'City bus'), 
-            ('Coach (long-distance)', 'Coach (long-distance)')
-        ])
+class BaseTripForm(FlaskForm):
+    kms = FloatField('Kilometers', validators=[InputRequired()])
+    save_trip = BooleanField('Save this trip?')
+    trip_name = StringField('Trip Name (if saving)', validators=[Optional(), Length(max=100)])
+
+class BusForm(BaseTripForm):
+    fuel_type = SelectField('Type of Fuel', validators=[InputRequired()], 
+        choices=[('Diesel', 'Diesel'), ('CNG', 'CNG'), ('Petrol', 'Petrol'), ('No Fossil Fuel', 'No Fossil Fuel')])
     submit = SubmitField('Submit')
 
-class CarForm(FlaskForm):
-    kms = FloatField('Kilometers', [InputRequired()])
-    fuel_type = SelectField('Fuel type', [InputRequired()], 
-        choices=[
-            ('Petrol', 'Petrol'), 
-            ('Diesel', 'Diesel'), 
-            ('Electric', 'Electric'),
-            ('Hybrid', 'Hybrid')
-        ])
+class CarForm(BaseTripForm):
+    fuel_type = SelectField('Type of Fuel', validators=[InputRequired()],
+        choices=[('Petrol', 'Petrol'), ('Diesel', 'Diesel'), ('No Fossil Fuel', 'No Fossil Fuel')])
     submit = SubmitField('Submit')
 
-class PlaneForm(FlaskForm):
-    kms = FloatField('Kilometers', [InputRequired()])
-    fuel_type = SelectField('Flight type', [InputRequired()], 
+class PlaneForm(BaseTripForm):
+    fuel_type = SelectField('Flight Type', validators=[InputRequired()],
         choices=[
             ('Short-haul flight (≤1,500 km)', 'Short-haul flight (≤1,500 km)'),
             ('Medium-haul flight (1,500–4,000 km)', 'Medium-haul flight (1,500–4,000 km)'),
@@ -32,36 +26,29 @@ class PlaneForm(FlaskForm):
         ])
     submit = SubmitField('Submit')
 
-class FerryForm(FlaskForm):
-    kms = FloatField('Kilometers', [InputRequired()])
-    fuel_type = SelectField('Passenger type', [InputRequired()], 
-        choices=[
-            ('Foot passenger', 'Foot passenger'), 
-            ('With car', 'With car')
-        ])
+class FerryForm(BaseTripForm):
+    fuel_type = SelectField('Passenger Type', validators=[InputRequired()],
+        choices=[('Foot passenger', 'Foot passenger'), ('With car', 'With car')])
     submit = SubmitField('Submit')
 
-class MotorbikeForm(FlaskForm):
-    kms = FloatField('Kilometers', [InputRequired()])
-    fuel_type = SelectField('Engine type', [InputRequired()], 
-        choices=[
-            ('Petrol', 'Petrol'), 
-            ('Electric', 'Electric')
-        ])
+class MotorbikeForm(BaseTripForm):
+    fuel_type = SelectField('Type of Fuel', validators=[InputRequired()],
+        choices=[('Petrol', 'Petrol'), ('Electric', 'Electric')])
     submit = SubmitField('Submit')
 
-class BicycleForm(FlaskForm):
-    kms = FloatField('Kilometers', [InputRequired()])
-    fuel_type = SelectField('Type', [InputRequired()], 
-        choices=[
-            ('Standard', 'Standard')
-        ])
+class BicycleForm(BaseTripForm):
+    fuel_type = SelectField('Type', validators=[InputRequired()],
+        choices=[('Standard', 'Standard')])
     submit = SubmitField('Submit')
 
-class WalkForm(FlaskForm):
-    kms = FloatField('Kilometers', [InputRequired()])
-    fuel_type = SelectField('Type', [InputRequired()], 
-        choices=[
-            ('Standard', 'Standard')
-        ])
+class WalkForm(BaseTripForm):
+    fuel_type = SelectField('Type', validators=[InputRequired()],
+        choices=[('Standard', 'Standard')])
     submit = SubmitField('Submit')
+
+from wtforms import SelectField
+from wtforms.validators import DataRequired
+
+class QuickLogForm(FlaskForm):
+    trip_id = SelectField('Choose a saved trip', validators=[DataRequired()], coerce=str)
+    submit = SubmitField('Log this trip')

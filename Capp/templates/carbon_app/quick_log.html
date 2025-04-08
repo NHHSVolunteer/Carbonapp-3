@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="new_entry py-5">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="box p-4 form-wrapper">
+            <div class="icon">
+                <i class="fa-solid fa-clock-rotate-left fa-3x"></i>
+              </div>
+          <h3 class="text-center mb-3">Quick Log</h3>
+          <p>
+            <ol style="text-align: left;">
+              <li>Filter by vehicle type (optional).</li>
+              <li>Select a previously saved trip.</li>
+            </ol>
+          </p>
+
+          <form method="GET" action="">
+            <div class="form-group">
+              <label for="filter_transport">Filter by transport type:</label>
+              <select id="filter_transport" name="filter_transport" class="form-control form-control-lg" onchange="this.form.submit()">
+                <option value="">All</option>
+                {% for transport in transport_types %}
+                  <option value="{{ transport }}" {% if selected_transport == transport %}selected{% endif %}>
+                    {{ transport }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          </form>
+
+          <form method="POST" action="">
+            {{ form.csrf_token }}
+            <fieldset class="form-group">
+              <div class="form-group">
+                {{ form.trip_id.label(class="form-control-label") }}
+                {% if form.trip_id.errors %}
+                  {{ form.trip_id(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.trip_id.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ form.trip_id(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+            </fieldset>
+            <div class="form-group">
+              {{ form.submit(class="btn btn-primary btn-lg btn-block submit-margin") }}
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
