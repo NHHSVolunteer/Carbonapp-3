@@ -3,15 +3,13 @@
   justify-content: space-between;
   align-items: center;
   max-width: 100%; /* Øker bredden for mer luft */
-  gap: 90px; /* Øker avstanden mellom tekst og bilde */
-  padding: 40px;
-  padding-top: 60px;
 
-  background-color: greenyellow;
+padding: 40px;
+background-color: #E6E9D3;
 }
 
 .container_text {
-  width: 45%;
+  width: 80%;
 }
 
 .container_text h1 {
@@ -29,19 +27,16 @@
 }
 
 .container_image {
-  width: 50%;
+  width: 20%;
   display: flex;
   justify-content: center;
-  padding-top: 30px;
 }
 
 .container_image img {
   width: 100%;
-  max-width: 600px; 
-  height: 300px;
+  max-width: 200px; 
   height: auto;
-  border-radius: 25px; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+
 }
 
 .flex_container_mission {

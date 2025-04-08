@@ -1,8 +1,7 @@
 /* HEADER-SEKSJON (uendret) */
 .section_header_carbon_app {
     background-color: #E6E9D3;
-    padding: 40px 0;
-    margin-bottom: 40px;
+    padding: 10px 0;
   }
   .header_container {
     padding: 0 20px;
@@ -37,12 +36,11 @@
     text-align: center;
   }
   .header_image {
-    flex: 0 1 400px;
-    text-align: right;
-    margin-bottom: 20px;
+    flex: 0 1 300px;
+    text-align: center;
   }
   .header_image img {
-    max-width: 350px;
+    max-width: 200px;
     height: auto;
     display: inline-block;
   }
