@@ -4,54 +4,159 @@
 
 <!-- Header -->
 <section class="section_header_home">
-  <div class="flex_container">
+  <div class="flex_container_welcome">
     <div class="container_text">
 
-           <h1>Welcome to our website</h1>
-           <p>This is our website, very good.!</p>
-            <br>
-            <div class="home-container-buttons">
-              <div class="btn">
-                <a href="{{url_for('home.home_home')}}", class="btn btn-primary btn-lg mr-2", style="background-color:#007bff;">Get Started</a>
-              </div> <!-- need to fix this, link doesnt work-->
+      <h1>Welcome to MyEcoFriend</h1>
+      <p>We developed this app to help you reduce your carbon footprint by providing you with an easy way to calculate
+        your carbon emissions. Our app is user-friendly, and it gives you an overview of your carbon footprint based on
+        the data you input. By using our app, you can gain a better understanding of what affects your carbon footprint
+        and what you can do to reduce it! We hope that our app can help you make the right choices to reduce your carbon
+        footprint and contribute to combating climate change. Thank you for using our app!
 
-            </div>
+      </p>
+      <br>
+      <div class="home-container-buttons">
+        <div class="btn">
+          <a href="{{url_for('carbon_app.carbon_app_home')}}" , class="btn btn-primary btn-lg mr-2" ,
+            style="background-color:#007bff;">Use the app!</a>
+        </div> <!-- need to fix this, link doesnt work-->
+
+      </div>
     </div>
 
     <div class="container_image">
       <img src="{{url_for('static', filename='Pictures/Frontpage_picture.jpg')}}" alt="">
     </div>
 
-    
+
 
   </div>
 
-  <div class="flex_container_under">
-
-    <div class="container_image">
-      <img src="{{url_for('static', filename='Pictures/Frontpage_picture.jpg')}}" alt="">
-    </div>
-
-    <div class="container_text">
-
-           <h1>Our Method</h1>
-           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-            Officia natus asperiores ad odio consequuntur odit!</p>
-            <br>
-            <div class="home-container-buttons">
-              <div class="btn">
-                <a href="{{url_for('methodology.methodology_home')}}", class="btn btn-primary btn-lg mr-2", style="background-color:#007bff;">Methodology</a>
-              </div>
-
-            </div>
-    </div>
+  <div class="flex_container_mission">
 
   
+    <div class="container_text">
+      <h1>Our purpose</h1>
+      <p> "Our purpose is to make regular people aware of environmental impacts and contribute to the achievement of environmental agreements." </p>
+      </div>
+  
+    </div>
 
+    <div class="flex_container_aboutUs">
+      <div class="container_text">
+        <h1>Meet Our Team</h1>
+        <div class="about_us_text">
+            <p>We are a diverse team of 7 students from the Norwegian School of Economics (NHH). Together we have developed this 
+                website to create a user-friendly platform to track your carbon emissions from different mode of transportation. Our
+                goal is to create an informative platfirm that allows our users to see their real life emissions, and to make environmental 
+                conscious descisions based upon this info. Read more about our talented group members below. 
+            </p>
+        </div>
+        <div class="container_team">
+            <!-- Row 1: 4 Profiles -->
+            <div class="profile-card">
+                <img src="{{url_for('static', filename='Pictures/Tran.png')}}" alt="Person 1" class="profile-pic">
+                <h2>Willy Tran</h2>
+                <ul>
+                    <li>Info about person 1</li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/willytran/" target="_blank"　class="linkedin">LinkedIn</a>
+                </div>
+            </div>
     
+            <div class="profile-card">
+                <img src="{{url_for('static', filename='Pictures/Leo.jpg')}}" alt="Person 2" class="profile-pic">
+                <h2>Leo Saito Ragner</h2>
+                <ul>
+                    <li>Hello my name is Leo Saito Ragner and i am a third year bachelor student at NHH. I am 21 years old. I am planning on doing my masters at NHH plan on taking the major in energy, natural resources and the environment. Outside of school i like to work out, cook and explore nature</li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/leo-saito-ragner-0226b4287/" target="_blank"　class="linkedin">LinkedIn</a>
+                </div>
+            </div>
+    
+            <div class="profile-card">
+                <img src="{{url_for('static', filename='Pictures/Sexypetter.jpg')}}" alt="Person 3" class="profile-pic">
+                <h2>Petter Mortensen</h2>
+                <ul>
+                    <li>Info about person 3</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"　target="_blank" class="linkedin">LinkedIn</a>
+                </div>
+            </div>
+    
+            <div class="profile-card">
+                <img src="{{url_for('static', filename='Pictures/Yuma.jpg')}}" alt="Person 4" class="profile-pic">
+                <h2>Yuma Obayashi</h2>
+                <ul>
+                    <li>Info about person 4</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" target="_blank"　class="linkedin">LinkedIn</a>
+                </div>
+            </div>
+    
+            <!-- Row 2: 3 Profiles -->
+            <div class="profile-card">
+                <img src="{{url_for('static', filename='Pictures/Toto.jpg')}}" alt="Person 5" class="profile-pic">
+                <h2>Toto Zhang</h2>
+                <ul>
+                    <li>Info about person 5</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"　target="_blank" class="linkedin">LinkedIn</a>
+                </div>
+            </div>
+    
+            <div class="profile-card">
+                <img src="{{url_for('static', filename='Pictures/Even2.png')}}" alt="Person 6" class="profile-pic">
+                <h2>Erik Granbo Fines</h2>
+                <ul>
+                    <li>I am 22 years old and I am from Trondheim. I am currently doing a bachelor study in Economics and Business administration at NHH. Outside of academic endeavours I am participating in a couple of student groups. My biggest interests are music, chess and football.</li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/erik-granbo-fines-3864b3192/" target="_blank"　class="linkedin">LinkedIn</a>
+                </div>
+            </div>
+    
+            <div class="profile-card">
+                <img src="{{url_for('static', filename='Pictures/Even.jpg')}}" alt="Person 7" class="profile-pic">
+                <h2>Even Karlsen Trontveit</h2>
+                <ul>
+                    <li>I am 24 years old and from the Hadeland region. I am currently on the last year of my bachelors degree at the Norergian School of Economics, but have enlisted for the Norwegian Armed Forces and will undertake my masters in the military. In addition to this I am a local representative at the muncipality council in my hometown. In my sparetime you will probably find me at the golf course.</li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/even-karlsen-trontveit-732478249/" target="_blank"　class="linkedin">LinkedIn</a>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+    </div>
+
+
+
 
   </div>
-</section> 
+  <div class="flex_container_methodology">
+    <div class="container_text">
 
-        
+      <h1>Our Methodology</h1>
+      <p>Are you curious about our methodology? Click the button below to learn more.</p>
+      <br>
+      <div class="home-container-buttons">
+        <div class="btn">
+          <a href="{{url_for('methodology.methodology_home')}}" , class="btn btn-primary btn-lg mr-2" ,
+            style="background-color:#007bff;">Methodology</a>
+        </div>
+
+      </div>
+    </div>
+</section>
+
+
 {% endblock content %}

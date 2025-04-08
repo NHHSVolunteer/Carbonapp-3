@@ -1,13 +1,13 @@
-.flex_container {
+.flex_container_welcome {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px; /* Øker bredden for mer luft */
-  margin: 20px auto; /* Mer mellomrom øverst */
+  max-width: 100%; /* Øker bredden for mer luft */
   gap: 90px; /* Øker avstanden mellom tekst og bilde */
   padding: 40px;
-  padding-top: 80px;
-  text-align: center;
+  padding-top: 60px;
+
+  background-color: greenyellow;
 }
 
 .container_text {
@@ -44,27 +44,49 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
-.flex_container_under {
+.flex_container_mission {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  max-width: 1200px; 
-  margin: 20px auto; 
-  gap: 35px; 
-  padding: 40px;
-  padding-top: 72px;
-  padding-bottom: 70px;
+  max-width: 100%;    
+  padding-top: 22px;
+  padding-bottom: 20px;
   text-align: center;
+  background-color: azure;
+}
+
+.flex_container_methodology {
+  display: flex;
+  justify-content: center; 
+  padding-top: 22px;
+  padding-bottom: 20px;
+  text-align: center;
+  background-color: tomato;
+}
+
+.flex_container_aboutUs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;    
+  padding-top: 22px;
+  padding-bottom: 20px;
+  background-color: turquoise;
 }
 
 @media (max-width: 768px) {
   
-.flex_container, .flex_container_under {
+.flex_container, .flex_container_methodology, .flex_container_mission {
       flex-direction: column; /* Endrer fra rad til kolonne */
       text-align: center;
       align-items: center;
       gap: 40px;
-      padding: 20px;
+  }
+
+  .flex_container_aboutUs {
+    flex-direction: row;
   }
 
   .container_text, .container_image {
