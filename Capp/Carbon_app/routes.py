@@ -1,9 +1,12 @@
-from flask import render_template, Blueprint, redirect, url_for, flash
-from Capp.models import Transport
+from flask import render_template, Blueprint, redirect, url_for, flash, request
+from Capp.models import Transport, SavedTrip
 from Capp import db
 from datetime import timedelta, datetime
 from flask_login import current_user
-from Capp.Carbon_app.forms import BusForm, CarForm, PlaneForm, FerryForm, MotorbikeForm, BicycleForm, WalkForm
+from Capp.Carbon_app.forms import (
+    BusForm, CarForm, PlaneForm, FerryForm, MotorbikeForm, BicycleForm, WalkForm
+)
+from Capp.Carbon_app.forms import QuickLogForm
 
 carbon_app = Blueprint('carbon_app', __name__)
 
@@ -29,8 +32,10 @@ co2_emissions_per_km = {
         'Hybrid': 121
     },
     'Bus': {
-        'City bus': 90,
-        'Coach (long-distance)': 27
+        'Diesel': 90,
+        'CNG': 75,
+        'Petrol': 90,
+        'No Fossil Fuel': 0
     },
     'Bicycle': {
         'Standard': 0
@@ -49,6 +54,8 @@ def handle_form_submission(form, transport):
         fuel = form.fuel_type.data
         g_per_km = co2_emissions_per_km[transport][fuel]
         co2 = calculate_emissions_kgs(kms, g_per_km)
+
+        # Lagre transportoppførsel
         emissions = Transport(
             kms=kms,
             transport=transport,
@@ -59,13 +66,27 @@ def handle_form_submission(form, transport):
             author=current_user
         )
         db.session.add(emissions)
+
+        # Hvis brukeren vil lagre denne turen
+        if getattr(form, "save_trip", False) and form.save_trip.data:
+            name = form.trip_name.data.strip()
+            if name:
+                saved_trip = SavedTrip(
+                    trip_name=name,
+                    transport=transport,
+                    fuel=fuel,
+                    kms=kms,
+                    user_id=current_user.id
+                )
+                db.session.add(saved_trip)
+
         db.session.commit()
         return redirect(url_for('carbon_app.your_data'))
     return None
 
 @carbon_app.route('/carbon_app')
 def carbon_app_home():
-    return render_template('carbon_app/carbon_app.html', title='carbon_app')
+    return render_template('carbon_app/carbon_app.html', title='Carbon App')
 
 @carbon_app.route('/carbon_app/new_entry_bus', methods=['GET', 'POST'])
 def new_entry_bus():
@@ -108,6 +129,50 @@ def new_entry_walk():
     form = WalkForm()
     result = handle_form_submission(form, 'Walking')
     return result or render_template('carbon_app/new_entry_walk.html', title='New Walk Entry', form=form)
+
+@carbon_app.route('/carbon_app/quick_log', methods=['GET', 'POST'])
+def quick_log():
+    selected_transport = request.args.get('filter_transport')
+    form = QuickLogForm()
+
+    query = SavedTrip.query.filter_by(user_id=current_user.id)
+    if selected_transport:
+        query = query.filter_by(transport=selected_transport)
+
+    trips = query.all()
+    form.trip_id.choices = [
+        (str(t.id), f"{t.trip_name} ({t.transport}, {t.kms} km)") for t in trips
+    ]
+
+    if form.validate_on_submit():
+        selected = SavedTrip.query.get(int(form.trip_id.data))
+        g_per_km = co2_emissions_per_km[selected.transport][selected.fuel]
+        co2 = calculate_emissions_kgs(selected.kms, g_per_km)
+
+        trip = Transport(
+            kms=selected.kms,
+            transport=selected.transport,
+            fuel=selected.fuel,
+            co2=co2,
+            ch4=0.0,
+            total=co2,
+            author=current_user
+        )
+        db.session.add(trip)
+        db.session.commit()
+        return redirect(url_for('carbon_app.your_data'))
+
+    transport_types = db.session.query(SavedTrip.transport).filter_by(user_id=current_user.id).distinct().all()
+    transport_types = sorted({t[0] for t in transport_types})
+
+    return render_template(
+        'carbon_app/quick_log.html',
+        title='Quick Log',
+        form=form,
+        transport_types=transport_types,
+        selected_transport=selected_transport
+    )
+
 
 @carbon_app.route('/carbon_app/your_data')
 def your_data():
