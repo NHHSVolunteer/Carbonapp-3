@@ -9,6 +9,7 @@
           <div class="text-center box p-4">
             <h3>You are already logged in ✅</h3>
             <p>There's no need to register again. You can go to the <a href="{{ url_for('carbon_app.carbon_app_home') }}">carbon app</a> or visit your <a href="{{ url_for('carbon_app.your_data') }}">dashboard</a>.</p>
+            <a href="{{ url_for('users.logout') }}" class="btn btn-outline-danger btn-sm">Log out</a>
           </div>
         {% else %}
           <div class="box p-4 form-wrapper">
