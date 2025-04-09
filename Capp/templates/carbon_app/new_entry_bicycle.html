@@ -1,15 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Main section for Bicycle trip logging -->
 <section class="new_entry py-5">
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8 col-sm-10">
         <div class="box p-4 form-wrapper">
+
+          <!-- Icon and heading -->
           <div class="icon">
             <i class="fa-solid fa-bicycle fa-3x"></i>
           </div>
           <h3 class="text-center mb-3">Bicycle</h3>
+
+          <!-- Instructions for the user -->
           <p>
             <ol style="text-align: left;">
               <li>Please, enter the number of kilometers.</li>
@@ -17,10 +22,13 @@
             </ol>
           </p>
 
+          <!-- Form start -->
           <form method="POST" action="">
-            {{ form.csrf_token }}
+            {{ form.csrf_token }}  {# CSRF token for security #}
+
             <fieldset class="form-group">
-              <!-- KM input -->
+
+              <!-- Input field for kilometers -->
               <div class="form-group">
                 {{ form.kms.label(class="form-control-label") }}
                 {% if form.kms.errors %}
@@ -35,7 +43,7 @@
                 {% endif %}
               </div>
 
-              <!-- Fuel type (always Standard) -->
+              <!-- Select field for fuel type (Bicycle will only have "Standard") -->
               <div class="form-group">
                 {{ form.fuel_type.label(class="form-control-label") }}
                 {% if form.fuel_type.errors %}
@@ -50,13 +58,13 @@
                 {% endif %}
               </div>
 
-              <!-- Save trip checkbox -->
+              <!-- Checkbox to optionally save the trip -->
               <div class="form-check mt-3 mb-2">
                 {{ form.save_trip(class="form-check-input") }}
                 {{ form.save_trip.label(class="form-check-label") }}
               </div>
 
-              <!-- Trip name -->
+              <!-- Input field for naming the trip if saved -->
               <div class="form-group">
                 {{ form.trip_name.label(class="form-control-label") }}
                 {% if form.trip_name.errors %}
@@ -73,11 +81,12 @@
 
             </fieldset>
 
-            <!-- Submit -->
+            <!-- Submit button -->
             <div class="form-group">
               {{ form.submit(class="btn btn-primary btn-lg btn-block submit-margin") }}
             </div>
-          </form>
+
+          </form>  <!-- End of form -->
 
         </div>
       </div>

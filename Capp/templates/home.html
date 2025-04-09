@@ -18,16 +18,32 @@
       </p>
       <br>
       <div class="home-container-buttons">
-        <div class="btn">
-          <a href="{{url_for('carbon_app.carbon_app_home')}}" , class="btn btn-primary btn-lg mr-2" ,
-            style="background-color:#007bff;">Use the app!</a>
-        </div> <!-- need to fix this, link doesnt work-->
-        <div class="btn">
-          <a href="{{url_for('carbon_app.quick_log')}}" , class="btn btn-primary btn-lg mr-2" ,
-            style="background-color:#007bff;">Quick log</a>
-        </div> <!-- need to fix this, link doesnt work-->
-
+        {% if current_user.is_authenticated %}
+          <div class="btn">
+            <a href="{{ url_for('carbon_app.carbon_app_home') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
+              Use the app!
+            </a>
+          </div>
+          <div class="btn">
+            <a href="{{ url_for('carbon_app.quick_log') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
+              Quick log
+            </a>
+          </div>
+        {% else %}
+          <div class="btn">
+            <a href="{{ url_for('users.register') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
+              Register
+            </a>
+          </div>
+          <div class="btn">
+            <a href="{{ url_for('users.login') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
+              Log in
+            </a>
+          </div>
+        {% endif %}
       </div>
+      
+      
     </div>
 
     <div class="container_image">
