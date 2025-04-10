@@ -1,4 +1,4 @@
-# Ignore Python bytecode
+# Ignore automatically generated Python code and files
 __pycache__/
 *.pyc
 *.pyo

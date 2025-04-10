@@ -1,15 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Section for logging a new motorbike trip -->
 <section class="new_entry py-5">
   <div class="container-fluid">
     <div class="row justify-content-center">
+      <!-- This centers the form box on the page -->
       <div class="col-lg-6 col-md-8 col-sm-10">
         <div class="box p-4 form-wrapper">
+
+          <!-- Motorbike icon -->
           <div class="icon">
             <i class="fa-solid fa-motorcycle fa-3x"></i>
           </div>
+
+          <!-- Title -->
           <h3 class="text-center mb-3">Motorbike</h3>
+
+          <!-- Instructions for the user -->
           <p>
             <ol style="text-align: left;">
               <li>Please, enter the number of kilometers.</li>
@@ -18,10 +26,13 @@
             </ol>
           </p>
 
+          <!-- The main form to log a trip -->
           <form method="POST" action="">
-            {{ form.csrf_token }}
+            {{ form.csrf_token }}  {# Security token against CSRF attacks #}
+
             <fieldset class="form-group">
-              <!-- KM -->
+
+              <!-- Kilometers input field -->
               <div class="form-group">
                 {{ form.kms.label(class="form-control-label") }}
                 {% if form.kms.errors %}
@@ -36,7 +47,7 @@
                 {% endif %}
               </div>
 
-              <!-- Fuel Type -->
+              <!-- Fuel type dropdown -->
               <div class="form-group">
                 {{ form.fuel_type.label(class="form-control-label") }}
                 {% if form.fuel_type.errors %}
@@ -57,7 +68,7 @@
                 {{ form.save_trip.label(class="form-check-label") }}
               </div>
 
-              <!-- Trip name -->
+              <!-- Name input for the saved trip -->
               <div class="form-group">
                 {{ form.trip_name.label(class="form-control-label") }}
                 {% if form.trip_name.errors %}
@@ -71,6 +82,7 @@
                   {{ form.trip_name(class="form-control form-control-lg") }}
                 {% endif %}
               </div>
+
             </fieldset>
 
             <!-- Submit button -->
@@ -78,7 +90,7 @@
               {{ form.submit(class="btn btn-primary btn-lg btn-block submit-margin") }}
             </div>
           </form>
-          
+
         </div>
       </div>
     </div>

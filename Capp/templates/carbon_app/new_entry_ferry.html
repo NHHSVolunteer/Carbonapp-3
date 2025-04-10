@@ -1,18 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Main section for ferry trip input -->
 <section class="new_entry py-5">
   <div class="container-fluid">
     <div class="row justify-content-center">
+      <!-- Centered form box -->
       <div class="col-lg-6 col-md-8 col-sm-10">
         <div class="box p-4 form-wrapper">
-          <!-- Ikon -->
+
+          <!-- Icon for ferry -->
           <div class="icon">
             <i class="fa-solid fa-ship fa-3x"></i>
           </div>
-          <!-- Tittel -->
+
+          <!-- Title -->
           <h3 class="text-center mb-3">Ferry</h3>
-          <!-- Beskrivelse -->
+
+          <!-- Instructions -->
           <p>
             <ol style="text-align: left;">
               <li>Please, enter the number of kilometers.</li>
@@ -21,11 +26,12 @@
             </ol>
           </p>
 
-          <!-- Skjema -->
+          <!-- Form for submitting ferry data -->
           <form method="POST" action="">
-            {{ form.csrf_token }}
+            {{ form.csrf_token }}  {# Security token to protect against CSRF attacks #}
             <fieldset class="form-group">
-              <!-- Kilometer -->
+
+              <!-- Kilometers input -->
               <div class="form-group">
                 {{ form.kms.label(class="form-control-label") }}
                 {% if form.kms.errors %}
@@ -40,7 +46,7 @@
                 {% endif %}
               </div>
 
-              <!-- Passenger Type -->
+              <!-- Passenger type dropdown (foot or with car) -->
               <div class="form-group">
                 {{ form.fuel_type.label(class="form-control-label") }}
                 {% if form.fuel_type.errors %}
@@ -55,13 +61,13 @@
                 {% endif %}
               </div>
 
-              <!-- Lagre turen -->
+              <!-- Checkbox to save this trip -->
               <div class="form-check mt-3 mb-2">
                 {{ form.save_trip(class="form-check-input") }}
                 {{ form.save_trip.label(class="form-check-label") }}
               </div>
 
-              <!-- Navn på lagret tur -->
+              <!-- Input field for naming the trip (if saving) -->
               <div class="form-group">
                 {{ form.trip_name.label(class="form-control-label") }}
                 {% if form.trip_name.errors %}
@@ -77,12 +83,12 @@
               </div>
             </fieldset>
 
-            <!-- Submit -->
+            <!-- Submit button -->
             <div class="form-group">
               {{ form.submit(class="btn btn-primary btn-lg btn-block submit-margin") }}
             </div>
           </form>
-          
+
         </div>
       </div>
     </div>

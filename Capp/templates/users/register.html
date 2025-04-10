@@ -1,24 +1,37 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Register page section with padding -->
 <section class="register_section py-5">
   <div class="container-fluid">
     <div class="row justify-content-center">
+      <!-- Responsive column centered on screen -->
       <div class="col-lg-6 col-md-8 col-sm-10">
+
         {% if current_user.is_authenticated %}
+          <!-- Show this if user is already logged in -->
           <div class="text-center box p-4">
             <h3>You are already logged in ✅</h3>
-            <p>There's no need to register again. You can go to the <a href="{{ url_for('carbon_app.carbon_app_home') }}">carbon app</a> or visit your <a href="{{ url_for('carbon_app.your_data') }}">dashboard</a>.</p>
+            <p>
+              There's no need to register again. You can go to the 
+              <a href="{{ url_for('carbon_app.carbon_app_home') }}">carbon app</a> 
+              or visit your 
+              <a href="{{ url_for('carbon_app.your_data') }}">dashboard</a>.
+            </p>
+            <!-- Optional logout button -->
             <a href="{{ url_for('users.logout') }}" class="btn btn-outline-danger btn-sm">Log out</a>
           </div>
+
         {% else %}
+          <!-- Registration form (only shown if not logged in) -->
           <div class="box p-4 form-wrapper">
             <form method="POST" action="">
-              {{ form.hidden_tag() }}
+              {{ form.hidden_tag() }} {# Includes CSRF token and hidden metadata #}
+
               <fieldset class="form-group">
                 <legend class="border-bottom mb-4 text-center">Join Today</legend>
 
-                <!-- Username -->
+                <!-- Username field -->
                 <div class="form-group">
                   {{ form.username.label(class="form-control-label") }}
                   {% if form.username.errors %}
@@ -33,7 +46,7 @@
                   {% endif %}
                 </div>
 
-                <!-- Email -->
+                <!-- Email field -->
                 <div class="form-group">
                   {{ form.email.label(class="form-control-label") }}
                   {% if form.email.errors %}
@@ -48,7 +61,7 @@
                   {% endif %}
                 </div>
 
-                <!-- Password -->
+                <!-- Password field -->
                 <div class="form-group">
                   {{ form.password.label(class="form-control-label") }}
                   {% if form.password.errors %}
@@ -63,7 +76,7 @@
                   {% endif %}
                 </div>
 
-                <!-- Confirm Password -->
+                <!-- Confirm password field -->
                 <div class="form-group">
                   {{ form.confirm_password.label(class="form-control-label") }}
                   {% if form.confirm_password.errors %}
@@ -77,14 +90,15 @@
                     {{ form.confirm_password(class="form-control form-control-lg") }}
                   {% endif %}
                 </div>
-
               </fieldset>
 
+              <!-- Submit button -->
               <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info btn-lg btn-block submit-margin") }}
               </div>
             </form>
 
+            <!-- Link to login if the user already has an account -->
             <div class="border-top pt-3 text-center">
               <small>
                 Already Have An Account?
@@ -93,6 +107,7 @@
             </div>
           </div>
         {% endif %}
+
       </div>
     </div>
   </div>

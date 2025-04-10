@@ -1,24 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
 
-
-<!-- Header -->
+<!-- Home Header Section -->
 <section class="section_header_home">
+
+  <!-- Welcome Section -->
   <div class="flex_container_welcome">
+    <!-- Left side: Text container -->
     <div class="container_text">
 
+      <!-- Main Welcome Message -->
       <h1>Welcome to MyEcoFriend</h1>
-      <p>We developed this app to help you reduce your carbon footprint by providing you with an easy way to calculate
-        your carbon emissions. Our app is user-friendly, and it gives you an overview of your carbon footprint based on
-        the data you input. By using our app, you can gain a better understanding of what affects your carbon footprint
-        and what you can do to reduce it! We hope that our app can help you make the right choices to reduce your carbon
-        footprint and contribute to combating climate change. Thank you for using our app!
-        <!-- I copied this from some other group so it needs to be changed-->
-
+      <p>
+        MyEcoFriend helps you become more aware of your environmental impact by calculating your carbon emissions based on how you travel. 
+        Our goal is to give you clear insights and encourage more sustainable choices. Whether you're a daily commuter or an occasional traveler, 
+        this tool is made for you — simple, fast, and effective!
       </p>
+      
+      <!-- Buttons depending on user login state -->
       <br>
       <div class="home-container-buttons">
         {% if current_user.is_authenticated %}
+          <!-- If user is logged in, show entry buttons -->
           <div class="btn">
             <a href="{{ url_for('carbon_app.carbon_app_home') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
               Use the app!
@@ -30,6 +33,7 @@
             </a>
           </div>
         {% else %}
+          <!-- If user is NOT logged in, show Register/Login buttons -->
           <div class="btn">
             <a href="{{ url_for('users.register') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
               Register
@@ -42,44 +46,42 @@
           </div>
         {% endif %}
       </div>
-      
-      
     </div>
 
+    <!-- Right side: Image container -->
     <div class="container_image">
-      <img src="{{url_for('static', filename='Pictures/homepage_picture_man_text.png')}}" alt="">
+      <img src="{{url_for('static', filename='Pictures/homepage_picture_man_text.png')}}" alt="Illustration for welcome section">
     </div>
-
-
-
   </div>
 
+  <!-- Our Purpose Section -->
   <div class="flex_container_mission">
-
-
     <div class="container_text">
-      <h1>Our purpose</h1>
-      <p> "Our purpose is to make regular people aware of environmental impacts and contribute to the achievement of
-        environmental agreements." </p>
+      <h1>Our Purpose</h1>
+      <p>
+        Our purpose is to make everyday people more aware of their environmental footprint and help contribute to reaching 
+        international sustainability goals. Every action counts — and we believe knowledge is the first step.
+      </p>
     </div>
-
   </div>
 
-
-  </div>
+  <!-- Methodology Section -->
   <div class="flex_container_methodology">
     <div class="container_text">
-
       <h1>Our Methodology</h1>
       <p>
-        Are you curious about our methodology?
-        Click <a href="{{ url_for('methodology.methodology_home') }}" style="color: green; text-decoration: underline;" onmouseover="this.style.color='#0a5f0a'" onmouseout="this.style.color='green'">here</a> to learn more.
+        Curious how we calculate your emissions?  
+        Click 
+        <a href="{{ url_for('methodology.methodology_home') }}" 
+           style="color: green; text-decoration: underline;" 
+           onmouseover="this.style.color='#0a5f0a'" 
+           onmouseout="this.style.color='green'">
+           here
+        </a> to learn more.
       </p>
-
-      
     </div>
   </div>
-</section>
 
+</section>
 
 {% endblock content %}
