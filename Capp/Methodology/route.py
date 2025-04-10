@@ -1,6 +1,14 @@
+# Import functions needed to render pages and create a Blueprint
 from flask import render_template, Blueprint
-methodology=Blueprint('methodology',__name__)
 
+# Create a Blueprint named 'methodology'
+# Blueprints allow you to group routes and functionality into separate files
+methodology = Blueprint('methodology', __name__)
+
+# Define a route for when users visit /methodology in the browser
 @methodology.route('/methodology')
 def methodology_home():
-  return render_template('methodology.html', title='methodology')
+    # This function will be called when someone visits the /methodology URL
+    # It returns the rendered 'methodology.html' page from your templates folder
+    # The "title" is passed into the HTML template and can be used in the <title> tag or elsewhere
+    return render_template('methodology.html', title='methodology')

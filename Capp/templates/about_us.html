@@ -1,40 +1,51 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Main About Us Section -->
 <section class="about-us">
+    <!-- Section title -->
     <h1>Meet Our Team</h1>
+
+    <!-- Introduction text -->
     <div class="about_us_text">
-        <p>We are a diverse team of 7 students from the Norwegian School of Economics (NHH). Together we have developed this 
-            website to create a user-friendly platform to track your carbon emissions from different mode of transportation. Our
-            goal is to create an informative platfirm that allows our users to see their real life emissions, and to make environmental 
-            conscious descisions based upon this info. Read more about our talented group members below. 
+        <p>
+            We are a diverse team of 7 students from the Norwegian School of Economics (NHH).
+            Together we have developed this website to create a user-friendly platform to track 
+            your carbon emissions from different modes of transportation. Our goal is to create 
+            an informative platform that allows our users to see their real-life emissions and 
+            to make environmentally conscious decisions based on this info. Read more about our 
+            talented group members below.
         </p>
     </div>
+
+    <!-- Container holding all profile cards -->
     <div class="container">
-        <!-- Row 1: 4 Profiles -->
+
+        <!-- Profile card: Willy Tran -->
         <div class="profile-card">
             <img src="{{url_for('static', filename='Pictures/Tran.png')}}" alt="Person 1" class="profile-pic">
             <h2>Willy Tran</h2>
             <ul>
-                <li>I’m a 24-year-old full-time student from Drammen, Norway. I’m about to start the Double Master’s program between NHH and HEC Montréal, focusing on sustainability. This subject immediately caught my attention, as it fits well with both my academic interests and future career goals. Through this course, I’ve gained useful skills in coding and learned how to work effectively in a multicultural team. In my free time, I enjoy being outdoors—especially fishing and running—as it helps me recharge and stay focused.
-                </li>
+                <li>I’m a 24-year-old full-time student from Drammen, Norway. I’m about to start the Double Master’s program between NHH and HEC Montréal, focusing on sustainability. This subject immediately caught my attention, as it fits well with both my academic interests and future career goals. Through this course, I’ve gained useful skills in coding and learned how to work effectively in a multicultural team. In my free time, I enjoy being outdoors—especially fishing and running—as it helps me recharge and stay focused.</li>
             </ul>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/willytran/" target="_blank"　class="linkedin">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/willytran/" target="_blank" class="linkedin">LinkedIn</a>
             </div>
         </div>
 
+        <!-- Profile card: Leo Saito Ragner -->
         <div class="profile-card">
             <img src="{{url_for('static', filename='Pictures/Leo.jpg')}}" alt="Person 2" class="profile-pic">
             <h2>Leo Saito Ragner</h2>
             <ul>
-                <li>Hello my name is Leo Saito Ragner and i am a third year bachelor student at NHH. I am 21 years old. I am planning on doing my masters at NHH plan on taking the major in energy, natural resources and the environment. Outside of school i like to work out, cook and explore nature</li>
+                <li>Hello, my name is Leo Saito Ragner and I am a third-year bachelor student at NHH. I am 21 years old. I plan on taking a master’s major in energy, natural resources and the environment. Outside of school, I like to work out, cook and explore nature.</li>
             </ul>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/leo-saito-ragner-0226b4287/" target="_blank"　class="linkedin">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/leo-saito-ragner-0226b4287/" target="_blank" class="linkedin">LinkedIn</a>
             </div>
         </div>
 
+        <!-- Profile card: Petter Mortensen -->
         <div class="profile-card">
             <img src="{{url_for('static', filename='Pictures/Sexypetter.jpg')}}" alt="Person 3" class="profile-pic">
             <h2>Petter Mortensen</h2>
@@ -42,59 +53,59 @@
                 <li>Info about person 3</li>
             </ul>
             <div class="social-links">
-                <a href="#"　target="_blank" class="linkedin">LinkedIn</a>
+                <a href="#" target="_blank" class="linkedin">LinkedIn</a>
             </div>
         </div>
 
+        <!-- Profile card: Yuma Obayashi -->
         <div class="profile-card">
             <img src="{{url_for('static', filename='Pictures/Yuma.jpg')}}" alt="Person 4" class="profile-pic">
             <h2>Yuma Obayashi</h2>
             <ul>
-                <li>I am 21 years old and I am from Tokyo, Japan. I am an exchange student from Keio University. I'm in my 3rd year of Bachelor and majoring in Economics. In Norway, I enjoy nature and learning about sustainability from different departments.
-                </li>
+                <li>I am 21 years old and I am from Tokyo, Japan. I am an exchange student from Keio University. I'm in my 3rd year of Bachelor and majoring in Economics. In Norway, I enjoy nature and learning about sustainability from different departments.</li>
             </ul>
             <div class="social-links">
-                <a href="#" target="_blank"　class="linkedin">LinkedIn</a>
+                <a href="#" target="_blank" class="linkedin">LinkedIn</a>
             </div>
         </div>
 
-        <!-- Row 2: 3 Profiles -->
+        <!-- Profile card: Toto Zhang -->
         <div class="profile-card">
             <img src="{{url_for('static', filename='Pictures/Toto.jpg')}}" alt="Person 5" class="profile-pic">
             <h2>Toto Zhang</h2>
             <ul>
-                <li>I’m a 21-year-old from Shanghai, China. I'm study international business in Rikkyo University in Japan. It is exciting for me to exchange to NHH and learn about sustainability in Norway. This period of study broadened my horizons, looking forward to more practical learning and communication in the future.
-                </li>
+                <li>I’m a 21-year-old from Shanghai, China. I'm studying international business at Rikkyo University in Japan. It is exciting for me to exchange to NHH and learn about sustainability in Norway. This period of study broadened my horizons. I'm looking forward to more practical learning and communication in the future.</li>
             </ul>
             <div class="social-links">
-                <a href="#"　target="_blank" class="linkedin">LinkedIn</a>
+                <a href="#" target="_blank" class="linkedin">LinkedIn</a>
             </div>
         </div>
 
+        <!-- Profile card: Erik Granbo Fines -->
         <div class="profile-card">
             <img src="{{url_for('static', filename='Pictures/Even2.png')}}" alt="Person 6" class="profile-pic">
             <h2>Erik Granbo Fines</h2>
             <ul>
-                <li>I am 22 years old and I am from Trondheim. I am currently doing a bachelor study in Economics and Business administration at NHH. Outside of academic endeavours I am participating in a couple of student groups. My biggest interests are music, chess and football.</li>
+                <li>I am 22 years old and from Trondheim. I am currently studying for a bachelor’s degree in Economics and Business Administration at NHH. Outside of academics, I participate in several student groups. My biggest interests are music, chess and football.</li>
             </ul>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/erik-granbo-fines-3864b3192/" target="_blank"　class="linkedin">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/erik-granbo-fines-3864b3192/" target="_blank" class="linkedin">LinkedIn</a>
             </div>
         </div>
 
+        <!-- Profile card: Even Karlsen Trontveit -->
         <div class="profile-card">
             <img src="{{url_for('static', filename='Pictures/Even.jpg')}}" alt="Person 7" class="profile-pic">
             <h2>Even Karlsen Trontveit</h2>
             <ul>
-                <li>I am 24 years old and from the Hadeland region. I am currently on the last year of my bachelors degree at the Norergian School of Economics, but have enlisted for the Norwegian Armed Forces and will undertake my masters in the military. In addition to this I am a local representative at the muncipality council in my hometown. In my sparetime you will probably find me at the golf course.</li>
+                <li>I am 24 years old and from the Hadeland region. I’m currently in my final year of a bachelor’s degree at NHH and have enlisted in the Norwegian Armed Forces for my master’s. I also serve as a local representative in my municipality council. In my spare time, I’m likely at the golf course.</li>
             </ul>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/even-karlsen-trontveit-732478249/" target="_blank"　class="linkedin">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/even-karlsen-trontveit-732478249/" target="_blank" class="linkedin">LinkedIn</a>
             </div>
         </div>
 
     </div>
 </section>
-       
 
 {% endblock content %}

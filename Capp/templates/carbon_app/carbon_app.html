@@ -1,43 +1,39 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- Last inn Bootstrap CSS fra CDN -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-  crossorigin="anonymous">
-
-<!-- Last inn ekstern CSS -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/carbon_app.css') }}">
-
-<!-- Full-Width Header Section (beholdt som før) -->
+<!-- Full-width header section for the Carbon App -->
 <section class="section_header_carbon_app">
   <div class="container-fluid header_container">
     <div class="header_carbon_app">
-      <!-- Left Column: Text & Buttons -->
+
+      <!-- Left side: Heading, description, and buttons -->
       <div class="header_text">
         <h1>Carbon App Calculator</h1>
         <p>
           Our app empowers you to reduce your carbon emissions by delivering actionable insights on your
           transportation choices. It offers a way to log your carbon-emitting trips and gives you personal
           footprint comparisons to help you make smarter, sustainable decisions. You can also use the quick-log
-          function to help you quickly log recurring trips .
+          function to help you quickly log recurring trips.
         </p>
+
         <div class="header_buttons">
+
+          <!-- Button linking to the methodology page (always visible) -->
           <div class="btn_wrapper">
-            <a href="{{ url_for('methodology.methodology_home') }}" class="btn btn-primary btn-lg">
-              Methodology
-            </a>
+            <a href="{{ url_for('methodology.methodology_home') }}" class="btn btn-primary btn-lg">Methodology</a>
+          </div>
+
+          {# Show these two buttons only if the user is logged in #}
+          {% if current_user.is_authenticated %}
+          <div class="btn_wrapper">
+            <a href="{{ url_for('carbon_app.your_data') }}" class="btn btn-primary btn-lg">Your Data</a>
           </div>
           <div class="btn_wrapper">
-            <a href="{{ url_for('carbon_app.your_data') }}" class="btn btn-primary btn-lg">
-              Your Data
-            </a>
+            <a href="{{ url_for('carbon_app.quick_log') }}" class="btn btn-primary btn-lg">Quick log</a>
           </div>
-          <div class="btn_wrapper">
-            <a href="{{ url_for('carbon_app.quick_log') }}" class="btn btn-primary btn-lg">
-              Quick log
-            </a>
-          </div>
+          {% endif %}
+
+          <!-- Button to open the instructions modal -->
           <div class="btn_wrapper">
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#instructionsModal">
               Instructions
@@ -45,25 +41,26 @@
           </div>
         </div>
       </div>
-      <!-- Right Column: Image -->
+
+      <!-- Right side: Illustration image -->
       <div class="header_image">
         <img src="{{ url_for('static', filename='Pictures/carbonapp_picture_woman.png') }}" alt="MyEcoFriend character">
       </div>
     </div>
   </div>
-  
-  <!-- Modal for Instructions -->
+
+  <!-- Modal that pops up when user clicks "Instructions" -->
   <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="instructionsModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
+          <h5 class="modal-title">Instructions</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>Hei hei hei</p>
+          <p>Hei hei hei</p>  {# You can replace this with actual instructions #}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -73,133 +70,126 @@
   </div>
 </section>
 
-<!-- Section for New Entry med bedre utnyttelse av plassen -->
+<!-- Section for logging new carbon entries -->
 <section class="section_carbon_app_new_entry_main">
-  <!-- container-fluid for å utnytte hele bredden av skjermen -->
   <div class="container-fluid">
-    <!-- Overskrift -->
+    <!-- Section title that changes based on login status -->
     <div class="row mb-4">
       <div class="col-12 text-center">
-        <h3>Make a new entry to log your carbon emissions!</h3>
+        <h3>
+          {% if current_user.is_authenticated %}
+            Make a new entry to log your carbon emissions!
+          {% else %}
+            You need to login to use the app.
+          {% endif %}
+        </h3>
       </div>
     </div>
-    <!-- Rutenett for kjøretøyalternativer -->
+
+    {# Only show the entry options if the user is logged in #}
+    {% if current_user.is_authenticated %}
     <div class="row">
-      <!-- Bus Option -->
+
+      <!-- Transport entry boxes: one per transport type -->
+
+      <!-- Bus -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
-          <div class="icon">
-            <i class="fa-solid fa-bus fa-3x"></i>
-          </div>
+          <div class="icon"><i class="fa-solid fa-bus fa-3x"></i></div>
           <h3>Bus</h3>
           <p>Please, enter your kilometers by using the bus.</p>
           <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_bus') }}">New Entry</a>
         </div>
       </div>
-      <!-- Car Option -->
+
+      <!-- Car -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
-          <div class="icon">
-            <i class="fa-solid fa-car fa-3x"></i>
-          </div>
+          <div class="icon"><i class="fa-solid fa-car fa-3x"></i></div>
           <h3>Car</h3>
           <p>Please, enter your kilometers by using the car.</p>
           <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_car') }}">New Entry</a>
         </div>
       </div>
-      <!-- Plane Option -->
+
+      <!-- Plane -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
-          <div class="icon">
-            <i class="fa-solid fa-plane fa-3x"></i>
-          </div>
+          <div class="icon"><i class="fa-solid fa-plane fa-3x"></i></div>
           <h3>Plane</h3>
           <p>Please, enter your kilometers by using the plane.</p>
           <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_plane') }}">New Entry</a>
         </div>
       </div>
-      <!-- Ferry Option -->
+
+      <!-- Ferry -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
-          <div class="icon">
-            <i class="fa-solid fa-ship fa-3x"></i>
-          </div>
+          <div class="icon"><i class="fa-solid fa-ship fa-3x"></i></div>
           <h3>Ferry</h3>
           <p>Please, enter your kilometers by using the ferry.</p>
           <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_ferry') }}">New Entry</a>
         </div>
       </div>
-      <!-- Motorbike Option -->
+
+      <!-- Motorbike -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
-          <div class="icon">
-            <i class="fa-solid fa-motorcycle fa-3x"></i>
-          </div>
+          <div class="icon"><i class="fa-solid fa-motorcycle fa-3x"></i></div>
           <h3>Motorbike</h3>
           <p>Please, enter your kilometers by using the motorbike.</p>
           <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_motorbike') }}">New Entry</a>
         </div>
       </div>
-      <!-- Bicycle Option -->
+
+      <!-- Bicycle -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
-          <div class="icon">
-            <i class="fa-solid fa-bicycle fa-3x"></i>
-          </div>
+          <div class="icon"><i class="fa-solid fa-bicycle fa-3x"></i></div>
           <h3>Bicycle</h3>
           <p>Please, enter your kilometers by using the bicycle.</p>
           <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_bicycle') }}">New Entry</a>
         </div>
       </div>
-      <!-- Walk Option -->
+
+      <!-- Walk -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
-          <div class="icon">
-            <i class="fa-solid fa-walking fa-3x"></i>
-          </div>
+          <div class="icon"><i class="fa-solid fa-walking fa-3x"></i></div>
           <h3>Walk</h3>
           <p>Please, enter your kilometers by walking.</p>
           <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_walk') }}">New Entry</a>
         </div>
       </div>
-        <!-- Quick log -->
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-          <div class="box">
-            <div class="icon">
-              <i class="fa-solid fa-clock-rotate-left fa-3x"></i>
-            </div>
-            <h3>Quick Log</h3>
-            <p> Choose a trip from your saved list.</p>
-            <a class="btn btn-primary" href="{{ url_for('carbon_app.quick_log') }}"> Go to saved list </a>
-          </div>
+
+      <!-- Quick Log -->
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <div class="box">
+          <div class="icon"><i class="fa-solid fa-clock-rotate-left fa-3x"></i></div>
+          <h3>Quick Log</h3>
+          <p>Choose a trip from your saved list.</p>
+          <a class="btn btn-primary" href="{{ url_for('carbon_app.quick_log') }}">Go to saved list</a>
         </div>
-         <!-- Quick log -->
-         <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-          <div class="box">
-            <div class="icon">
-              <i class="fa-solid fa-question fa-3x"></i>
-            </div>
-            <h3>More to come...</h3>
-            <p> We are working to implement more transportation options</p>
-            <a class="btn btn-primary" href="{{ url_for('home.home_home') }}">Go to homepage</a>
-          </div>
+      </div>
+
+      <!-- More to come -->
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <div class="box">
+          <div class="icon"><i class="fa-solid fa-question fa-3x"></i></div>
+          <h3>More to come...</h3>
+          <p>We are working to implement more transportation options.</p>
+          <a class="btn btn-primary" href="{{ url_for('home.home_home') }}">Go to homepage</a>
         </div>
+      </div>
+
     </div>
+    {% endif %}
   </div>
 </section>
 
-<!-- Bootstrap og avhengigheter JavaScript -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-  crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-  crossorigin="anonymous">
-</script>
+<!-- JS libraries for Bootstrap functionality -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
 
 {% endblock content %}

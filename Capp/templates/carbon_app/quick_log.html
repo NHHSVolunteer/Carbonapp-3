@@ -1,15 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Section for logging a saved trip using Quick Log -->
 <section class="new_entry py-5">
   <div class="container-fluid">
     <div class="row justify-content-center">
+      <!-- Responsive centered column -->
       <div class="col-lg-6 col-md-8 col-sm-10">
         <div class="box p-4 form-wrapper">
-            <div class="icon">
-                <i class="fa-solid fa-clock-rotate-left fa-3x"></i>
-              </div>
+
+          <!-- Icon and title -->
+          <div class="icon">
+            <i class="fa-solid fa-clock-rotate-left fa-3x"></i>
+          </div>
           <h3 class="text-center mb-3">Quick Log</h3>
+
+          <!-- Instructions -->
           <p>
             <ol style="text-align: left;">
               <li>Filter by vehicle type (optional).</li>
@@ -17,11 +23,14 @@
             </ol>
           </p>
 
+          <!-- Filter form for selecting transport type (GET request) -->
           <form method="GET" action="">
             <div class="form-group">
               <label for="filter_transport">Filter by transport type:</label>
               <select id="filter_transport" name="filter_transport" class="form-control form-control-lg" onchange="this.form.submit()">
+                <!-- Default: show all -->
                 <option value="">All</option>
+                <!-- Loop through each available transport type -->
                 {% for transport in transport_types %}
                   <option value="{{ transport }}" {% if selected_transport == transport %}selected{% endif %}>
                     {{ transport }}
@@ -31,9 +40,12 @@
             </div>
           </form>
 
+          <!-- Form to actually log a selected saved trip (POST request) -->
           <form method="POST" action="">
-            {{ form.csrf_token }}
+            {{ form.csrf_token }}  {# Protects against CSRF attacks #}
+
             <fieldset class="form-group">
+              <!-- Dropdown for selecting a saved trip -->
               <div class="form-group">
                 {{ form.trip_id.label(class="form-control-label") }}
                 {% if form.trip_id.errors %}
@@ -48,6 +60,8 @@
                 {% endif %}
               </div>
             </fieldset>
+
+            <!-- Submit button to log the selected trip -->
             <div class="form-group">
               {{ form.submit(class="btn btn-primary btn-lg btn-block submit-margin") }}
             </div>
