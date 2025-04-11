@@ -1,0 +1,118 @@
+body {
+    background-color: #e9edd8; 
+    font-size: 18px;
+}
+
+.section_header_methodology {
+    background-color: #e9edd8; /* Matches the section background */
+    height: 45vh; /* Ensures the section fills the full viewport height */
+    display: flex; /* Enables flexbox for alignment */
+    align-items: top; /* Centers content vertically */
+    justify-content: space-between; /* Adds space between text and image */
+    box-sizing: border-box; /* Includes padding in height/width calculations */
+    font-size: 0px;
+}
+.section_header_methodology h1 {
+    font-size: 40px; /* Increases font size for the headline */
+    line-height: 1.2; /* Improves readability with proper line spacing */
+    color: #2f3e2f; /* Sets text color to a darker green */
+    text-align: center; /* Centers the headline */
+    margin-top: 0px; /* Removes extra margin above the headline */
+    margin-bottom: 0px; /* Removes extra margin below the headline */
+}
+.section_header_methodology p {
+    font-size: 18px; /* Information text */
+    line-height: 1.5; /* Improves readability*/
+    margin: 22px; /* Adds spacing around the paragraph */
+}
+.flex_container_methodology_2 {/* Flexbox for the image and text */
+    display: flex;
+    justify-content: center; 
+    margin: 20px;
+    padding-top: 22px;
+    padding-bottom: 20px;
+    text-align: center;
+    background-color:#AFCB98;
+    border-radius: 15px; /* Adds rounded corners to the section */
+  }
+.section_header_methodology .container_buttons_links_header {
+    margin-top: -45px; /* Moves the buttons upward */
+    margin-left: 1000px; /* Moves the buttons to the right */
+    display: flex; /* Ensures buttons are aligned properly */
+    justify-content: center; 
+}
+.section_methodology_main_text {
+    display: flex;
+    flex-direction: column; /* Stacks smaller boxes vertically */
+    background-color: #AFCB98; /* Background color for the huge box */
+    margin: 20px; /* Adds spacing outside the huge box */
+    padding: 20px; /* Adds internal spacing inside the huge box */
+    border-radius: 15px; /* Rounds the edges*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow */
+    box-sizing: border-box; /* Ensures padding is included in the box size */
+}
+.formula { /* Formula text*/
+    font-size: 1.5em; /* Makes the formula text larger */
+    font-weight: bold; /* Makes the formula text bold */
+    text-align: center; /* Centers the formula */
+    margin: 20px 0; /* Adds spacing above and below the formula */
+}
+
+.small_box {/* Smaller boxes inside the large box */
+    background-color: #ffffff; /* Background color for smaller boxes */
+    margin: 10px; /* Adds spacing between smaller boxes */
+    padding: 50px; /* Adds internal spacing inside smaller boxes */
+    border-radius: 10px; /* Rounds the edges of smaller boxes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*shadow */
+    text-align: center; /* Centers text inside the smaller boxes */
+    height: 310px;
+    width: 100%;
+    font-size: 30px; /* Increases font size for all text inside the boxes */
+    line-height: 1.6; /* Improves readability with proper line spacing */
+}
+.small_box img { /* Image inside the smaller boxes */
+    margin-top: -40px; /* Space above image negative moving it upwards */
+    margin-bottom: -20px; /*Space below the image negative allowing other entities closer*/
+    display: block; /* Ensure the image is treated as a block element */
+    margin-left: auto; /* Center the image horizontally */
+    margin-right: auto;
+}
+.small_box h2 {/* Headline inside the smaller boxes */
+    display: block; /* Ensures the headline is displayed */
+    visibility: visible;
+    font-size: 25px; 
+    text-align: center;
+    color: #000000; 
+    margin-top: 15px;
+}
+.small_box p {/* Text inside the smaller boxes */
+    font-size: 18px; /* Adjusts the font size*/
+    line-height: 1.6; /* Line spacing */
+    color: #000000; /* Black */
+    text-align: center; /* Center the paragraph text */
+    margin-top: 5px;
+}
+.plane_box, .ferry_box {
+    height: 175px; /* Reduce the height for these specific boxes */
+    padding: 50px 30px; /* Adjust padding to fit the content */
+}
+.full_width {/* Larger single boxes that span the full width */
+    width: 95%; /* Almost full width */
+    padding: 30px; /* Adds internal spacing inside the larger single boxes */
+    border-radius: 10px; /* Rounded edges */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*shadow */
+    margin: 10px auto; /* Adds spacing above and below the larger boxes */
+    box-sizing: border-box; /* Ensures padding is included in the box size */
+    font-size: 18px; 
+}
+.total_emissions_box h2, 
+.total_emissions_box p {
+    margin-top: -5px; /* Moves the text 5px upward */
+}
+.grid_container {/* Grid layout for smaller boxes */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+    gap: 10px; /* Adds spacing between grid items */
+    padding: 0 65px;
+    box-sizing: border-box;
+}
