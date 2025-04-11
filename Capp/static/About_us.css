@@ -5,13 +5,14 @@
 }
 
 .about-us h1 {
-    font-size: 28px;
+    font-size: 30px;
     margin-bottom: 22px;
     color: #4d4d4d;
 }
 
 .about-us p {
     padding-bottom: 15px;
+    font-size: 16px;
 }
 
 .container {
