@@ -1,13 +1,125 @@
 {% extends "layout.html" %}
 {% block content %}
-  
-<!-- Header -->
-<section class="section_header_methodology">
-    <div class="container">
-  
-      Methodology
-      
-    </div>
-</section> 
 
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='methodology.css') }}">
+<!--starting text-->
+<section class="section_header_methodology">
+  <div class="flex_container_methodology_2">
+    <div class="container_text_methodology">
+      <h1>Methodology</h1>
+      <p>Here at My Eco Friend we are committed to providing you with the most
+         accurate representation of your carbon footprint possible. Therefore, 
+         we will in this section explain what numbers we use in our calculations
+          as well as our formula. Our experience is that users trust the app more
+           when they understand how it works. This knowledge will also allow the 
+           user to make their own calculations should they travel with a vehicle 
+           that they know to have a different emission level than the numbers we 
+           provide. Our app lets you calculate your carbon footprint from the  
+           cars, trains, motorbikes, commercial airplanes and ferries, as well
+           as from walking and riding your bicycle which we assume have 0 emissions. 
+      </p>
+      <br>
+      <!-- Buttons -->
+      <div class="container_buttons_links_header">
+        <div class="btn">
+          <a href="#" class="btn btn-primary btn-lg mr-2" style="background-color:#088a15;">Paper</a>
+        </div>
+        <div class="btn">
+          <a href="{{url_for('carbon_app.carbon_app_home')}}" class="btn btn-primary btn-lg mr-2" style="background-color:#088a15;">Carbon App</a>
+        </div>
+      </div>
+    </div>
+    <!-- Image -->
+    <div class="container_picture_methodology">
+      <img 
+        src="static/Pictures/Methodology_picture_man.png" 
+        alt="Methodology Picture" 
+        width="200" 
+        height="250" 
+        style="flex-shrink: 0;" 
+      />
+    </div>
+  </div>
+</section>
+        
+           
+
+<!--Methodology main text-->
+<section class="section_methodology_main_text">
+  <div class="container_text_methodology_main_text">
+    <!-- First full-width box -->
+    <div class="small_box full_width">
+      <h1>Calculations</h1>
+      <p>The formula we use to calculate your carbon footprint derived from 
+        the average carbon footprint of each vehicle, the distance you travel,
+        and the number of passengers in your vehicle. It can mathematically be 
+        expressed as follows:</p>
+      <p class="formula">\[ E = D \cdot V \div N \]</p>
+      <p>Where E = Emissions, D = Distance
+         travelled, V = Vehicle's pollution/km, 
+         and N = Number of passengers in 
+         the vehicle (if applicable).</p>
+      <p>We have used the following numbers and formulas in our calculations:</p>
+    </div>
+
+    <!-- Grid of smaller boxes -->
+    <div class="grid_container">
+        <div class="small_box">
+          <img src="{{ url_for('static', filename='Pictures/Bil.svg') }}" width="75" height="75" alt="Car Icon">            
+          <h2>Car</h2>
+          <p><strong>Medium Diesel Car:</strong>160g CO2/km</p>
+          <p><strong>Medium Gasoline Car:</strong> 240g CO2/km</p>
+          <p><strong>Electric SUV:</strong> 25g CO2/km</p>
+          <p><strong>Small Electric Car:</strong> 14g CO2/km</p>
+          <p><em>Traffic significantly increases these numbers.</em></p>
+        </div>
+        <div class="small_box">
+          <img src="{{ url_for('static', filename='Pictures/tog.svg') }}" width="75" height="75" alt="Train Icon">            
+            <h2>Train</h2>
+            <p><strong>Long Range Train:</strong> 31g CO2/km</p>
+            <p><strong>Local Train:</strong> 58g CO2/km</p>
+            <p><strong>Electric Train:</strong> 10g CO2/km</p>
+        </div>
+        <div class="small_box">
+          <img src="{{ url_for('static', filename='Pictures/Bus.svg') }}" width="75" height="75" alt="Bus Icon">
+          <h2>Bus</h2>
+          <p><strong>Diesel Bus:</strong> 27g CO2/km</p>
+          <p><strong>Electric Bus:</strong> 13g CO2/km</p>
+        </div>
+        <div class="small_box">
+          <img src="{{ url_for('static', filename='Pictures/Motorbike.svg') }}" width="75" height="75" alt="Motorcycle Icon">
+          <h2>Motorbike</h2>
+          <p><strong>Small Gasoline Motorbike:</strong> 82.77g CO2/km</p>
+          <p><strong>Medium Gasoline Motorbike:</strong> 100.86g CO2/km</p>
+          <p><strong>Large Gasoline Motorbike:</strong> 132.37g CO2/km</p>
+      </div>
+        <div class="small_box plane_box">
+          <img src="{{ url_for('static', filename='Pictures/Airplane.svg') }}" width="75" height="75" alt="Airplane Icon">
+            <h2>Airplane</h2>
+            <p><strong>Commercial Airplane: </strong>236g CO2/km</p>
+
+        </div>
+        <div class="small_box ferry_box">
+          <img src="{{ url_for('static', filename='Pictures/Ferry.svg') }}" width="75" height="75" alt="Ferry Icon">
+            <h2>Ferry</h2>
+            <p><strong>Ferry:</strong> 123g CO2/km</p>
+        </div>
+    </div>
+
+    <!-- Last full-width box -->
+    <div class="small_box full_width total_emissions_box">
+      <h2>Total Carbon Emissions</h2>
+      <p>To calculate the total carbon emissions from all the vehicles you have 
+        travelled with, we sum up the emissions from each vehicle using the following formula:</p>
+      <p class="formula">\[ TOTE = \sum_{i=1}^n E_i \]</p>
+      <p>Where TOTE = Total Carbon Emissions, and Ei = Emissions from each submission.</p>
+      <p>This number is further used to calculate how you are doing compared to the average 
+        in Norway and as we expand it will be used to calculate how you are doing
+         compared to the average other countries as well.
+      </p>
+    </div>
+  </div>
+</section>
+<link rel="stylesheet" href="{{ url_for('static', filename='methodology.css') }}">
 {% endblock content %}
