@@ -23,29 +23,30 @@ carbon_app = Blueprint('carbon_app', __name__)
 # Dictionary: CO₂ emissions per vehicle type in grams per passenger-kilometer (g/pkm)
 co2_emissions_per_km = {
     'Plane': {
-        'Short-haul flight (≤1,500 km)': 251,
-        'Medium-haul flight (1,500–4,000 km)': 195,
-        'Long-haul flight (>4,000 km)': 150
+        'Commercial Airplane': 251    
     },
     'Ferry': {
-        'Foot passenger': 19,
-        'With car': 130
+        'Standard': 123
     },
     'Motorbike': {
-        'Petrol': 83,
-        'Electric': 0
+        'Small Gasoline Motorbike': 82.77,
+        'Medium Gasoline Motorbike': 100.86,
+        'Large Gasoline Motorbike': 132.37
     },
     'Car': {
-        'Petrol': 170,
-        'Diesel': 173,
-        'Electric': 47,
-        'Hybrid': 121
+        'Medium Diesel Car': 160,
+        'Medium Gasoline Car': 240,
+        'Electric SUV': 25,
+        'Small Electric Car': 14
     },
     'Bus': {
-        'Diesel': 90,
-        'CNG': 75,
-        'Petrol': 90,
-        'No Fossil Fuel': 0
+        'Diesel Bus': 27,
+        'Electric Bus' : 13
+    },
+    'Train' : {
+        'Long Range Train': 31,
+        'Local Train': 58,
+        'Electric Train' : 10,
     },
     'Bicycle': {
         'Standard': 0

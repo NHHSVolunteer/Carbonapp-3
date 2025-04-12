@@ -62,6 +62,22 @@
                 {% endif %}
               </div>
 
+              <!-- Passengers -->
+              <div class="form-group">
+                {{ form.passengers.label(class="form-control-label") }}
+                {% if form.passengers.errors %}
+                  {{ form.passengers(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.passengers.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ form.passengers(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+
+
               <!-- Save trip checkbox -->
               <div class="form-check mt-3 mb-2">
                 {{ form.save_trip(class="form-check-input") }}
