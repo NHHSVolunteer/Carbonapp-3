@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- Section for logging a new plane trip -->
+<!-- Section for logging a new train trip -->
 <section class="new_entry py-5">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -9,30 +9,30 @@
       <div class="col-lg-6 col-md-8 col-sm-10">
         <div class="box p-4 form-wrapper">
 
-          <!-- Airplane icon -->
+          <!-- Train icon -->
           <div class="icon">
-            <i class="fa-solid fa-plane fa-3x"></i>
+            <i class="fa-solid fa-train-subway fa-3x"></i>
           </div>
 
           <!-- Title -->
-          <h3 class="text-center mb-3">Plane</h3>
+          <h3 class="text-center mb-3">Train</h3>
 
           <!-- User instructions -->
           <p>
             <ol style="text-align: left;">
-              <li>Please, enter the number of kilometers traveled.</li>
-              <li>Select the type of flight (short-, medium- or long-haul).</li>
-              <li>Optionally save this trip for future quick logging.</li>
+              <li>Enter the distance you traveled by train in kilometers.</li>
+              <li>Select the train type (e.g., long range, local, or electric).</li>
+              <li>You may optionally save this trip for quick logging in the future.</li>
             </ol>
           </p>
 
-          <!-- Form for entering trip data -->
+          <!-- Train form -->
           <form method="POST" action="">
-            {{ form.csrf_token }}  {# Security token to protect against CSRF attacks #}
+            {{ form.csrf_token }}  {# CSRF protection #}
 
             <fieldset class="form-group">
 
-              <!-- Kilometers input -->
+              <!-- Distance input -->
               <div class="form-group">
                 {{ form.kms.label(class="form-control-label") }}
                 {% if form.kms.errors %}
@@ -47,7 +47,7 @@
                 {% endif %}
               </div>
 
-              <!-- Flight type dropdown (short-, medium-, or long-haul) -->
+              <!-- Train type dropdown -->
               <div class="form-group">
                 {{ form.type.label(class="form-control-label") }}
                 {% if form.type.errors %}
@@ -62,13 +62,13 @@
                 {% endif %}
               </div>
 
-              <!-- Option to save the trip -->
+              <!-- Save trip checkbox -->
               <div class="form-check mt-3 mb-2">
                 {{ form.save_trip(class="form-check-input") }}
                 {{ form.save_trip.label(class="form-check-label") }}
               </div>
 
-              <!-- Name for the saved trip -->
+              <!-- Name of saved trip -->
               <div class="form-group">
                 {{ form.trip_name.label(class="form-control-label") }}
                 {% if form.trip_name.errors %}
@@ -85,7 +85,7 @@
 
             </fieldset>
 
-            <!-- Submit button -->
+            <!-- Submit -->
             <div class="form-group">
               {{ form.submit(class="btn btn-primary btn-lg btn-block submit-margin") }}
             </div>

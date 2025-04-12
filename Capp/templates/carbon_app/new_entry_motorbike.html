@@ -47,20 +47,36 @@
                 {% endif %}
               </div>
 
-              <!-- Fuel type dropdown -->
+              <!-- Motorbike type dropdown -->
               <div class="form-group">
-                {{ form.fuel_type.label(class="form-control-label") }}
-                {% if form.fuel_type.errors %}
-                  {{ form.fuel_type(class="form-control form-control-lg is-invalid") }}
+                {{ form.type.label(class="form-control-label") }}
+                {% if form.type.errors %}
+                  {{ form.type(class="form-control form-control-lg is-invalid") }}
                   <div class="invalid-feedback">
-                    {% for error in form.fuel_type.errors %}
+                    {% for error in form.type.errors %}
                       <span>{{ error }}</span>
                     {% endfor %}
                   </div>
                 {% else %}
-                  {{ form.fuel_type(class="form-control form-control-lg") }}
+                  {{ form.type(class="form-control form-control-lg") }}
                 {% endif %}
               </div>
+
+              <!-- Passengers -->
+              <div class="form-group">
+                {{ form.passengers.label(class="form-control-label") }}
+                {% if form.passengers.errors %}
+                  {{ form.passengers(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.passengers.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ form.passengers(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+
 
               <!-- Save trip checkbox -->
               <div class="form-check mt-3 mb-2">
