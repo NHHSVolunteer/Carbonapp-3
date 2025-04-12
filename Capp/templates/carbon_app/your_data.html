@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
+
 {% block head %}
-  <!-- Link til din CSS-fil (for eksempel register_section.css) -->
+  <!-- Link to your CSS file (e.g., register_section.css) -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/register_section.css') }}">
 {% endblock head %}
 
@@ -9,10 +10,12 @@
 <!-- Table Section -->
 <section class="table_main py-4">
   <div class="container-fluid table-main-container">
-    <!-- New Entry Button plassert absolutt i topp høyre hjørne -->
+
+    <!-- New Entry Button in top-right corner -->
     <a href="{{ url_for('carbon_app.carbon_app_home') }}" class="btn btn-primary btn-lg new-entry-btn">
       New Entry
     </a>
+
     <div class="row justify-content-center">
       <div class="col-11">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -24,6 +27,8 @@
             {% endfor %}
           {% endif %}
         {% endwith %}
+
+        <!-- Responsive table -->
         <div class="table-responsive">
           <table class="table">
             <thead class="thead-dark">
@@ -32,9 +37,9 @@
                 <th scope="col">Date</th>
                 <th scope="col">Kilometres</th>
                 <th scope="col">Transport</th>
-                <th scope="col">Fuel</th>
-                <th scope="col">Co2</th>
-                <th scope="col">Ch4</th>
+                <th scope="col">Transport Type</th>
+                <th scope="col">Passengers</th>
+                <th scope="col">CO₂ (kg)</th>
                 <th scope="col">Total</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -46,9 +51,9 @@
                   <td>{{ entry.date.strftime("%m-%d-%Y") }}</td>
                   <td>{{ entry.kms }}</td>
                   <td>{{ entry.transport }}</td>
-                  <td>{{ entry.fuel }}</td>
+                  <td>{{ entry.type }}</td>
+                  <td>{{ entry.passengers }}</td>
                   <td>{{ entry.co2 }}</td>
-                  <td>{{ entry.ch4 }}</td>
                   <td>{{ entry.total }}</td>
                   <td>
                     <a href="{{ url_for('carbon_app.delete_emission', entry_id=entry.id) }}" class="btn btn-outline-danger btn-sm">
@@ -60,6 +65,7 @@
             </tbody>
           </table>
         </div>
+
       </div>
     </div>
   </div>

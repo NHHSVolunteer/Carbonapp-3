@@ -31,10 +31,10 @@ class Transport(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Unique trip ID
     kms = db.Column(db.Float)                     # Number of kilometers traveled
     transport = db.Column(db.String)              # Transport mode (e.g., Bus, Car)
-    fuel = db.Column(db.String)                   # Fuel type (e.g., Diesel, Electric)
+    type = db.Column(db.String)                   # Transport type (Variation of chosen transportation)
+    passengers = db.Column(db.Integer, default=1) # Passengers
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # Auto-set date
     co2 = db.Column(db.Float)                     # CO₂ emissions in kg
-    ch4 = db.Column(db.Float)                     # CH₄ emissions (optional / unused)
     total = db.Column(db.Float)                   # Total emissions (currently same as CO₂)
 
     # Link each trip to a user
@@ -47,6 +47,7 @@ class SavedTrip(db.Model):
     id = db.Column(db.Integer, primary_key=True)          # Unique ID for the saved trip
     trip_name = db.Column(db.String(100), nullable=False) # Name given by user (e.g., "Home to Work")
     transport = db.Column(db.String(50), nullable=False)  # Type of transport
-    fuel = db.Column(db.String(50), nullable=False)       # Fuel used
+    type = db.Column(db.String(50), nullable=False)       # Type of chosen transportation
     kms = db.Column(db.Float, nullable=False)             # Distance
+    passengers = db.Column(db.Integer, nullable=True)     # Passengers
     user_id = db.Column(db.Integer, db.ForeignKey('user_table.id'), nullable=False)  # Linked user

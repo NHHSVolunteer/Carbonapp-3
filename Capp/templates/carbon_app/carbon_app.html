@@ -92,6 +92,26 @@
 
       <!-- Transport entry boxes: one per transport type -->
 
+        <!-- Car -->
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+          <div class="box">
+            <div class="icon"><i class="fa-solid fa-car fa-3x"></i></div>
+            <h3>Car</h3>
+            <p>Please, enter your kilometers by using the car.</p>
+            <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_car') }}">New Entry</a>
+          </div>
+        </div>
+
+        <!-- Motorbike -->
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <div class="box">
+          <div class="icon"><i class="fa-solid fa-motorcycle fa-3x"></i></div>
+          <h3>Motorbike</h3>
+          <p>Please, enter your kilometers by using the motorbike.</p>
+          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_motorbike') }}">New Entry</a>
+        </div>
+      </div>
+
       <!-- Bus -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
@@ -102,15 +122,18 @@
         </div>
       </div>
 
-      <!-- Car -->
+
+ <!-- Train -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="box">
-          <div class="icon"><i class="fa-solid fa-car fa-3x"></i></div>
-          <h3>Car</h3>
-          <p>Please, enter your kilometers by using the car.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_car') }}">New Entry</a>
+          <div class="icon"><i class="fa-solid fa-train fa-3x"></i></div>
+          <h3>Train</h3>
+          <p>Please, enter your kilometers by using the train.</p>
+          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_train') }}">New Entry</a>
         </div>
       </div>
+
+    
 
       <!-- Plane -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
@@ -132,15 +155,6 @@
         </div>
       </div>
 
-      <!-- Motorbike -->
-      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-        <div class="box">
-          <div class="icon"><i class="fa-solid fa-motorcycle fa-3x"></i></div>
-          <h3>Motorbike</h3>
-          <p>Please, enter your kilometers by using the motorbike.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_motorbike') }}">New Entry</a>
-        </div>
-      </div>
 
       <!-- Bicycle -->
       <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
@@ -169,16 +183,6 @@
           <h3>Quick Log</h3>
           <p>Choose a trip from your saved list.</p>
           <a class="btn btn-primary" href="{{ url_for('carbon_app.quick_log') }}">Go to saved list</a>
-        </div>
-      </div>
-
-      <!-- More to come -->
-      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-        <div class="box">
-          <div class="icon"><i class="fa-solid fa-question fa-3x"></i></div>
-          <h3>More to come...</h3>
-          <p>We are working to implement more transportation options.</p>
-          <a class="btn btn-primary" href="{{ url_for('home.home_home') }}">Go to homepage</a>
         </div>
       </div>
 

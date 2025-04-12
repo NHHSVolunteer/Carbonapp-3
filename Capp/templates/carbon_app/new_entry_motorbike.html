@@ -47,18 +47,18 @@
                 {% endif %}
               </div>
 
-              <!-- Fuel type dropdown -->
+              <!-- Motorbike type dropdown -->
               <div class="form-group">
-                {{ form.fuel_type.label(class="form-control-label") }}
-                {% if form.fuel_type.errors %}
-                  {{ form.fuel_type(class="form-control form-control-lg is-invalid") }}
+                {{ form.type.label(class="form-control-label") }}
+                {% if form.type.errors %}
+                  {{ form.type(class="form-control form-control-lg is-invalid") }}
                   <div class="invalid-feedback">
-                    {% for error in form.fuel_type.errors %}
+                    {% for error in form.type.errors %}
                       <span>{{ error }}</span>
                     {% endfor %}
                   </div>
                 {% else %}
-                  {{ form.fuel_type(class="form-control form-control-lg") }}
+                  {{ form.type(class="form-control form-control-lg") }}
                 {% endif %}
               </div>
 

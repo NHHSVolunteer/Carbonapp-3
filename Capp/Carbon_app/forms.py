@@ -1,32 +1,27 @@
-# Import base class for forms in Flask
 from flask_wtf import FlaskForm
-
-# Import commonly used field types and validators
 from wtforms import SubmitField, SelectField, FloatField, BooleanField, StringField, IntegerField
 from wtforms.validators import InputRequired, Optional, Length, NumberRange, DataRequired
 
 # -------------------------------
-# Base class for shared form logic
+# Base class for shared fields
 # -------------------------------
 class BaseTripForm(FlaskForm):
     kms = FloatField('Kilometers', validators=[InputRequired()])
     save_trip = BooleanField('Save this trip?')
     trip_name = StringField('Trip Name (if saving)', validators=[Optional(), Length(max=100)])
-    submit = SubmitField('Submit')  # Included in base so child classes don't need to redefine it
+    submit = SubmitField('Submit')  # All forms inherit this
 
 
 # -------------------------------
 # Form for Bus trips
 # -------------------------------
 class BusForm(BaseTripForm):
-    fuel_type = SelectField(
-        'Type of Fuel',
+    type = SelectField(
+        'Type of Bus',
         validators=[InputRequired()],
         choices=[
-            ('Diesel', 'Diesel'),
-            ('CNG', 'CNG'),
-            ('Petrol', 'Petrol'),
-            ('No Fossil Fuel', 'No Fossil Fuel')
+            ('Diesel Bus', 'Diesel Bus'),
+            ('Electric Bus', 'Electric Bus')
         ]
     )
 
@@ -35,8 +30,8 @@ class BusForm(BaseTripForm):
 # Form for Car trips
 # -------------------------------
 class CarForm(BaseTripForm):
-    fuel_type = SelectField(
-        'Type of Fuel',
+    type = SelectField(
+        'Car Type',
         validators=[InputRequired()],
         choices=[
             ('Medium Diesel Car', 'Medium Diesel Car'),
@@ -55,13 +50,11 @@ class CarForm(BaseTripForm):
 # Form for Plane trips
 # -------------------------------
 class PlaneForm(BaseTripForm):
-    fuel_type = SelectField(
+    type = SelectField(
         'Flight Type',
         validators=[InputRequired()],
         choices=[
-            ('Short-haul flight (≤1,500 km)', 'Short-haul flight (≤1,500 km)'),
-            ('Medium-haul flight (1,500–4,000 km)', 'Medium-haul flight (1,500–4,000 km)'),
-            ('Long-haul flight (>4,000 km)', 'Long-haul flight (>4,000 km)')
+            ('Commercial Airplane', 'Commercial Airplane')
         ]
     )
 
@@ -70,12 +63,11 @@ class PlaneForm(BaseTripForm):
 # Form for Ferry trips
 # -------------------------------
 class FerryForm(BaseTripForm):
-    fuel_type = SelectField(
-        'Passenger Type',
+    type = SelectField(
+        'Ferry Type',
         validators=[InputRequired()],
         choices=[
-            ('Foot passenger', 'Foot passenger'),
-            ('With car', 'With car')
+            ('Standard', 'Standard')
         ]
     )
 
@@ -84,12 +76,13 @@ class FerryForm(BaseTripForm):
 # Form for Motorbike trips
 # -------------------------------
 class MotorbikeForm(BaseTripForm):
-    fuel_type = SelectField(
-        'Type of Fuel',
+    type = SelectField(
+        'Motorbike Type',
         validators=[InputRequired()],
         choices=[
-            ('Petrol', 'Petrol'),
-            ('Electric', 'Electric')
+            ('Small Gasoline Motorbike', 'Small Gasoline Motorbike'),
+            ('Medium Gasoline Motorbike', 'Medium Gasoline Motorbike'),
+            ('Large Gasoline Motorbike', 'Large Gasoline Motorbike')
         ]
     )
     passengers = IntegerField(
@@ -102,7 +95,7 @@ class MotorbikeForm(BaseTripForm):
 # Form for Bicycle trips
 # -------------------------------
 class BicycleForm(BaseTripForm):
-    fuel_type = SelectField(
+    type = SelectField(
         'Type',
         validators=[InputRequired()],
         choices=[('Standard', 'Standard')]
@@ -113,10 +106,24 @@ class BicycleForm(BaseTripForm):
 # Form for Walking trips
 # -------------------------------
 class WalkForm(BaseTripForm):
-    fuel_type = SelectField(
+    type = SelectField(
         'Type',
         validators=[InputRequired()],
         choices=[('Standard', 'Standard')]
+    )
+
+# -------------------------------
+# Form for Train trips
+# -------------------------------
+class TrainForm(BaseTripForm):
+    type = SelectField(
+        'Train Type',
+        validators=[InputRequired()],
+        choices=[
+            ('Long Range Train', 'Long Range Train'),
+            ('Local Train', 'Local Train'),
+            ('Electric Train', 'Electric Train')
+        ]
     )
 
 

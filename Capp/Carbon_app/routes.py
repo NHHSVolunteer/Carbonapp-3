@@ -13,7 +13,7 @@ from flask_login import current_user
 
 # Import custom forms
 from Capp.Carbon_app.forms import (
-    BusForm, CarForm, PlaneForm, FerryForm, MotorbikeForm, BicycleForm, WalkForm
+    BusForm, CarForm, PlaneForm, FerryForm, MotorbikeForm, BicycleForm, WalkForm, TrainForm
 )
 from Capp.Carbon_app.forms import QuickLogForm
 
@@ -57,45 +57,64 @@ co2_emissions_per_km = {
 }
 
 # Convert grams to kilograms and calculate total CO2 emissions
-def calculate_emissions_kgs(kms, g_per_km):
-    return round((float(kms) * g_per_km) / 1000, 2)
+def calculate_emissions_kgs(kms, g_per_km, passengers=1):
+    passengers = max(passengers, 1)  # to ensure if no passengers choice, then it is 1
+    return round((float(kms) * g_per_km) / (1000 * passengers), 2)
 
 # Reusable function to handle form logic and emissions saving
 def handle_form_submission(form, transport):
     if form.validate_on_submit():
+        # Extract the number of kilometers and fuel type from the form
         kms = form.kms.data
-        fuel = form.fuel_type.data
-        g_per_km = co2_emissions_per_km[transport][fuel]
-        co2 = calculate_emissions_kgs(kms, g_per_km)
+        type = form.type.data
 
-        # Save the transport log
+        # Try to get the number of passengers (only relevant for car/motorbike)
+        # If the field doesn't exist (e.g., for bus or plane), default to 1
+        passengers = getattr(form, 'passengers', None)
+        num_passengers = passengers.data if passengers else 1
+
+        # Get the emissions factor (g CO2 per passenger-km)
+        g_per_km = co2_emissions_per_km[transport][type]
+
+        # Calculate total CO2 emissions in kilograms, adjusted for number of passengers
+        co2 = calculate_emissions_kgs(kms, g_per_km, passengers=num_passengers)
+
+        # Save the transport log entry to the database
         emissions = Transport(
             kms=kms,
             transport=transport,
-            fuel=fuel,
-            co2=co2,
-            ch4=0.0,
+            type=type,
+            passengers=num_passengers,
+            co2=co2,    
             total=co2,
             author=current_user
         )
         db.session.add(emissions)
 
-        # If the user wants to save the trip to reuse later
+        # If the user wants to save this trip for reuse later
         if getattr(form, "save_trip", False) and form.save_trip.data:
             name = form.trip_name.data.strip()
             if name:
                 saved_trip = SavedTrip(
                     trip_name=name,
                     transport=transport,
-                    fuel=fuel,
+                    type=type,
                     kms=kms,
+                    passengers=passengers,  
                     user_id=current_user.id
                 )
                 db.session.add(saved_trip)
 
+        # Commit all changes to the database
         db.session.commit()
+
+        # Redirect to the user's data dashboard after submission
         return redirect(url_for('carbon_app.your_data'))
+
+    # If form is not submitted or validation fails, return None to continue rendering the page
     return None
+
+
 
 # Homepage for the carbon app
 @carbon_app.route('/carbon_app')
@@ -145,44 +164,60 @@ def new_entry_walk():
     result = handle_form_submission(form, 'Walking')
     return result or render_template('carbon_app/new_entry_walk.html', title='New Walk Entry', form=form)
 
-# Quick Log: lets user log a saved trip
+@carbon_app.route('/carbon_app/new_entry_train', methods=['GET', 'POST'])
+def new_entry_train():
+    form = TrainForm()
+    result = handle_form_submission(form, 'Train')
+    return result or render_template('carbon_app/new_entry_train.html', title='New Train Entry', form=form)
+
+
+
+# Quick Log: allows the user to quickly log a previously saved trip
 @carbon_app.route('/carbon_app/quick_log', methods=['GET', 'POST'])
 def quick_log():
-    selected_transport = request.args.get('filter_transport')  # e.g., ?filter_transport=Car
+    selected_transport = request.args.get('filter_transport')  # Optional filter, e.g. ?filter_transport=Car
     form = QuickLogForm()
 
-    # Get the user's saved trips, optionally filtered by vehicle
+    # Filter saved trips for the current user
     query = SavedTrip.query.filter_by(user_id=current_user.id)
     if selected_transport:
         query = query.filter_by(transport=selected_transport)
     trips = query.all()
 
-    # Fill the form with options
+    # Populate the select field with saved trips
     form.trip_id.choices = [
         (str(t.id), f"{t.trip_name} ({t.transport}, {t.kms} km)") for t in trips
     ]
 
-    # If user submits, log the selected trip
+    # If the user submits the form, log the selected trip
     if form.validate_on_submit():
         selected = SavedTrip.query.get(int(form.trip_id.data))
-        g_per_km = co2_emissions_per_km[selected.transport][selected.fuel]
-        co2 = calculate_emissions_kgs(selected.kms, g_per_km)
 
+        # Use stored passenger count, or default to 1 if not available
+        num_passengers = selected.passengers if selected.passengers else 1
+
+        # Lookup emissions factor and calculate CO2
+        g_per_km = co2_emissions_per_km[selected.transport][selected.type]
+        co2 = calculate_emissions_kgs(selected.kms, g_per_km, passengers=num_passengers)
+
+        # Create and save new Transport log
         trip = Transport(
             kms=selected.kms,
             transport=selected.transport,
-            fuel=selected.fuel,
+            type=selected.type,
+            passengers=num_passengers,
             co2=co2,
-            ch4=0.0,
             total=co2,
             author=current_user
         )
         db.session.add(trip)
         db.session.commit()
+
         return redirect(url_for('carbon_app.your_data'))
 
-    # Populate filter dropdown with all available transport types
-    transport_types = db.session.query(SavedTrip.transport).filter_by(user_id=current_user.id).distinct().all()
+    # Populate the filter dropdown with all distinct transport types
+    transport_types = db.session.query(SavedTrip.transport) \
+        .filter_by(user_id=current_user.id).distinct().all()
     transport_types = sorted({t[0] for t in transport_types})
 
     return render_template(

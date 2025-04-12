@@ -6,5 +6,6 @@ app = create_app()
 
 # Run everything inside an "app context" to allow DB operations
 with app.app_context():
-    db.create_all()   # This line creates all tables based on your models in models.py
-    print("Database created!")
+    db.create_all()
+    print("Database recreated with passengers in SavedTrip")
+
