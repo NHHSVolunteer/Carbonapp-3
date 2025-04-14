@@ -1,16 +1,23 @@
-# Import Flask tools
 from flask import Flask, render_template, Blueprint
+from Capp.models import Transport
+from flask_login import current_user
+from Capp import db  # Make sure db is imported
 
-# Create a new Blueprint for the homepage
-# A Blueprint allows us to split up the app into reusable components
 home = Blueprint('home', __name__)
 
-# Define two URL routes:
-# '/' is the root URL (e.g., https://example.com)
-# '/home' is an alternative URL that also points to the homepage
 @home.route('/')
 @home.route('/home')
 def home_home():
-    # Render the "home.html" template
-    # This file should be located in the templates folder (e.g., templates/home.html)
-    return render_template('home.html')
+    # Default to 0 emissions
+    user_total_emissions = 0
+
+    # Only calculate if user is logged in
+    if current_user.is_authenticated:
+        user_total_emissions = db.session.query(
+            db.func.sum(Transport.co2)
+        ).filter_by(author=current_user).scalar() or 0
+
+        user_total_emissions = round(user_total_emissions, 2)
+
+    # Pass the result to the template
+    return render_template('home.html', user_total_emissions=user_total_emissions)
