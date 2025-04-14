@@ -35,7 +35,6 @@ class Transport(db.Model):
     passengers = db.Column(db.Integer, default=1) # Passengers
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # Auto-set date
     co2 = db.Column(db.Float)                     # CO₂ emissions in kg
-    total = db.Column(db.Float)                   # Total emissions (currently same as CO₂)
 
     # Link each trip to a user
     user_id = db.Column(db.Integer, db.ForeignKey('user_table.id'), nullable=False)

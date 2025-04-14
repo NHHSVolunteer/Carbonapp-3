@@ -40,7 +40,7 @@
                 <th scope="col">Transport Type</th>
                 <th scope="col">Passengers</th>
                 <th scope="col">CO₂ (kg)</th>
-                <th scope="col">Total</th>
+                <th scope="col">Info</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
@@ -54,7 +54,16 @@
                   <td>{{ entry.type }}</td>
                   <td>{{ entry.passengers }}</td>
                   <td>{{ entry.co2 }}</td>
-                  <td>{{ entry.total }}</td>
+                  <td>
+                    <span
+                      onclick="alert('This trip emitted {{ entry.co2 }} kg CO₂, which is approximately equal to producing {{ (entry.co2 / 33) | round(2) }} pair(s) of jeans or {{ (entry.co2 / 27) | round(2) }} kg of beef.')"
+                      style="cursor: pointer; color: #007bff;"
+                      title="Click for CO₂ comparison"
+                    >
+                      ?
+                    </span>
+                  </td>
+                  
                   <td>
                     <a href="{{ url_for('carbon_app.delete_emission', entry_id=entry.id) }}" class="btn btn-outline-danger btn-sm">
                       Delete
