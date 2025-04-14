@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carbon_app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='methodology.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='About_us.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/register_section.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register_section.css') }}">
 
     <!-- Viewport meta for responsive layout on mobile devices -->
     <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1">
@@ -51,16 +51,28 @@
         </div>
 
         <!-- Desktop menu items -->
-        <ul>
-            <li><a href="{{ url_for('About_us.About_us_home') }}">About Us</a></li>
-            <li><a href="{{ url_for('methodology.methodology_home') }}">Methodology</a></li>
-            <li><a href="{{ url_for('carbon_app.carbon_app_home') }}">Carbon App</a></li>
-            <li><a href="{{ url_for('users.register') }}">Account</a></li>
-        </ul>
-
-        <!-- Mobile navigation icon -->
-        <div class="mobile_navbar">
-            <i class="fa-solid fa-outdent"></i>
+        <div id="nav-links">
+            <ul>
+              <li>
+                <a href="{{url_for('About_us.About_us_home')}}">About Us</a>
+            </li>
+            <li>
+                <a href="{{url_for('methodology.methodology_home')}}">Methodology</a>
+            </li>
+            <li>
+                <a href="{{url_for('carbon_app.carbon_app_home')}}">Carbon App</a>
+            </li>
+            <li>
+                <a href="{{url_for('users.register')}}">Account</a>
+            </li>
+            </ul>
+            <i id="close" class="fa fa-times"></i>
+          </div>
+        
+          <!-- Mobile Hamburger Icon -->
+          <div id="mobile">
+            <i id="bar" class="fa fa-bars"></i>
+          </div>
         </div>
     </div>
 
@@ -84,4 +96,25 @@
     </footer>
 
 </body>
+
+<script>
+    const bar = document.getElementById("bar");
+    const close = document.getElementById("close");
+    const navLinks = document.getElementById("nav-links");
+  
+    if (bar) {
+      bar.addEventListener("click", () => {
+        navLinks.classList.add("active");
+        document.body.style.overflow = "hidden"; // prevent background scroll
+      });
+    }
+  
+    if (close) {
+      close.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    }
+  </script>
+  
 </html>

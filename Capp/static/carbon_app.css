@@ -90,3 +90,35 @@
     margin: 0 auto; /* Sentere boksen horisontalt */
   }
   
+  @media (max-width: 768px) {
+
+    .section_header_carbon_app {
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .header_text {
+      width: 100%;
+    }
+
+    .header_text h1 {
+      font-size: 32px;
+      text-align: center;
+    }
+
+    .btn_wrapper {
+      size: 75%;
+      font-size: 22px;
+      display: table-column;
+      width: 200px;
+    }
+
+    .header_buttons {
+      display: grid;
+      
+      text-align: center;
+      justify-content: center;
+    }
+
+
+  }

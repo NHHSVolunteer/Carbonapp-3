@@ -173,6 +173,7 @@ select {
 .container_your_emissions {
   display: flex;
   flex-direction: column;
+  background-color: #f9f9f9;
   text-align: center;
   max-width: 400px;
   margin-top: 1rem;
