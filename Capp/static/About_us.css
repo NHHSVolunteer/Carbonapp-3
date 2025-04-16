@@ -104,4 +104,5 @@ ul li {
     .container {
         grid-template-columns: repeat(1, 1fr); /* Same as above but For phones */
     }
+
 }

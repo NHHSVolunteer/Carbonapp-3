@@ -1,27 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- Home Header Section -->
+<!-- Main Home Header Section -->
 <section class="section_header_home">
 
-  <!-- Welcome Section -->
+  <!-- Welcome Message and Buttons -->
   <div class="flex_container_welcome">
-    <!-- Left side: Text container -->
+    
+    <!-- Text content on the left side -->
     <div class="container_text">
-
-      <!-- Main Welcome Message -->
       <h1>Welcome to MyEcoFriend</h1>
       <p>
         MyEcoFriend helps you become more aware of your environmental impact by calculating your carbon emissions based on how you travel. 
-        Our goal is to give you clear insights and encourage more sustainable choices. Whether you're a daily commuter or an occasional traveler, 
-        this tool is made for you — simple, fast, and effective!
+        Whether you're a daily commuter or an occasional traveler, this tool gives you insights to help make sustainable choices.
       </p>
       
-      <!-- Buttons depending on user login state -->
+      <!-- Conditional buttons based on login state -->
       <br>
       <div class="home-container-buttons">
         {% if current_user.is_authenticated %}
-          <!-- If user is logged in, show entry buttons -->
+          <!-- Show app and quick log buttons if user is logged in -->
           <div class="btn">
             <a href="{{ url_for('carbon_app.carbon_app_home') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
               Use the app!
@@ -33,7 +31,7 @@
             </a>
           </div>
         {% else %}
-          <!-- If user is NOT logged in, show Register/Login buttons -->
+          <!-- Show register/login options if not logged in -->
           <div class="btn">
             <a href="{{ url_for('users.register') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
               Register
@@ -48,19 +46,18 @@
       </div>
     </div>
 
-    <!-- Right side: Image container -->
+    <!-- Image on the right side -->
     <div class="container_image">
       <img src="{{url_for('static', filename='Pictures/homepage_picture_man_text.png')}}" alt="Illustration for welcome section">
     </div>
   </div>
 
-  <!-- Our Purpose Section -->
+  <!-- Purpose Section -->
   <div class="flex_container_mission">
     <div class="container_text">
       <h1>Our Purpose</h1>
       <p>
-        Our purpose is to make everyday people more aware of their environmental footprint and help contribute to reaching 
-        international sustainability goals. Every action counts — and we believe knowledge is the first step.
+        We want to help everyday people become more conscious of their carbon footprint and support international sustainability goals. Every step matters!
       </p>
     </div>
   </div>
@@ -83,5 +80,99 @@
   </div>
 
 </section>
+
+<!-- Emissions Comparison Section -->
+<div class="comparison_header">
+  <h3>Compare your current emissions with the rest of the world</h3>
+</div>
+
+<br>
+
+<div class="flex_container_comparison">
+  
+  <!-- User's total emissions box -->
+  <div class="container_your_emissions">
+    <h5>See your emissions below</h5>
+    <br>
+    <p>Your total transport emissions: {{ user_total_emissions }} kg CO₂</p>
+  </div>
+
+  <!-- Country dropdown + emissions fact -->
+  <div class="container_world_emissions">
+    <label for="country">Country <span style="color: red;">*</span></label>
+    <select id="country" name="country" class="form-control">
+      <option value="">-- Select a country --</option>
+      <option value="Norway">Norway</option>
+      <option value="Sweden">Sweden</option>
+      <option value="Denmark">Denmark</option>
+      <option value="Finland">Finland</option>
+      <option value="USA">USA</option>
+      <option value="China">China</option>
+    </select>
+
+    <!-- Placeholder for selected country's emissions info -->
+    <div class="emissions-output" id="emissionsOutput">
+      Please select a country to view its carbon emissions.
+    </div>
+  </div>
+
+  <!-- Text output for the comparison calculation -->
+  <div id="comparisonOutput" class="comparison-output">
+    Please select a country to compare your emissions
+  </div> 
+
+  <!-- Script to handle dropdown selection and output -->
+  <script>
+    // Get the user's emissions from Flask (in kg)
+    const userEmissions = {{ user_total_emissions | tojson }};
+
+    // Average emissions per person per country (converted to kg from tons)
+    const emissionsNumbers = {
+      Norway: 2.236 * 1000,
+      Sweden: 1.4 * 1000,
+      Denmark: 2.038 * 1000,
+      Finland: 1.76 * 1000,
+      USA: 5.328 * 1000,
+      China: 0.658 * 1000
+    };
+
+    // Descriptive emissions facts per country
+    const emissionsData = {
+      Norway: "The average Norwegian emitted 2236 kg of CO₂ from transport in 2022.",
+      Sweden: "The average Swede emitted 1400 kg of CO₂ from transport in 2022.",
+      Denmark: "The average Dane emitted 2038 kg of CO₂ from transport in 2022.",
+      Finland: "The average Finn emitted 1760 kg of CO₂ from transport in 2022.",
+      USA: "The average American emitted 5328 kg of CO₂ from transport in 2022.",
+      China: "The average Chinese person emitted 658 kg of CO₂ from transport in 2022"
+    };
+
+    // HTML references
+    const dropdown = document.getElementById("country");
+    const output = document.getElementById("emissionsOutput");
+    const comparisonOutput = document.getElementById("comparisonOutput");
+
+    // Event listener for dropdown selection
+    dropdown.addEventListener("change", function () {
+      const selectedCountry = this.value;
+
+      if (selectedCountry && emissionsData[selectedCountry]) {
+        // Display the fact for the selected country
+        const countryText = emissionsData[selectedCountry];
+        output.textContent = countryText;
+
+        // Calculate and display the percentage comparison
+        const countryValue = emissionsNumbers[selectedCountry];
+        const percentage = ((userEmissions / countryValue) * 100).toFixed(2);
+        comparisonOutput.textContent = `Your current transport-emissions are ${percentage}% of the per person average yearly transport-emissions of ${selectedCountry}.`;
+
+      } else {
+        // If no country is selected, show default messages
+        output.textContent = "Please select a country to view its carbon emissions.";
+        comparisonOutput.textContent = "Please select a country to compare your emissions";
+      }
+    });
+  </script>
+
+</div>
 
 {% endblock content %}

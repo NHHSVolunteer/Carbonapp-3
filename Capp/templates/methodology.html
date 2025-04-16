@@ -6,21 +6,36 @@
 <!--starting text-->
 <section class="section_header_methodology">
   <div class="flex_container_methodology_2">
+    
+    <!-- LEFT: TEXT -->
     <div class="container_text_methodology">
       <h1>Methodology</h1>
       <p>Here at My Eco Friend we are committed to providing you with the most
-         accurate representation of your carbon footprint possible. Therefore, 
-         we will in this section explain what numbers we use in our calculations
-          as well as our formula. Our experience is that users trust the app more
-           when they understand how it works. This knowledge will also allow the 
-           user to make their own calculations should they travel with a vehicle 
-           that they know to have a different emission level than the numbers we 
-           provide. Our app lets you calculate your carbon footprint from the  
-           cars, trains, motorbikes, commercial airplanes and ferries, as well
-           as from walking and riding your bicycle which we assume have 0 emissions. 
+        accurate representation of your carbon footprint possible. Therefore, 
+        we will in this section explain what numbers we use in our calculations
+         as well as our formula. Our experience is that users trust the app more
+          when they understand how it works. This knowledge will also allow the 
+          user to make their own calculations should they travel with a vehicle 
+          that they know to have a different emission level than the numbers we 
+          provide. Our app lets you calculate your carbon footprint from the  
+          cars, trains, motorbikes, commercial airplanes and ferries, as well
+          as from walking and riding your bicycle which we assume have 0 emissions. 
       </p>
-      <br>
-      <!-- Buttons -->
+    </div>
+
+    <!-- RIGHT: IMAGE + BUTTONS WRAPPED TOGETHER -->
+    <div class="image_buttons_wrapper">
+      <div class="container_picture_methodology">
+        <img 
+          src="static/Pictures/Methodology_picture_man.png" 
+          alt="Methodology Picture" 
+          width="200" 
+          height="250" 
+          style="flex-shrink: 0;" 
+        />
+      </div>
+
+      <!-- BUTTONS BELOW IMAGE -->
       <div class="container_buttons_links_header">
         <div class="btn">
           <a href="#" class="btn btn-primary btn-lg mr-2" style="background-color:#088a15;">Paper</a>
@@ -30,18 +45,10 @@
         </div>
       </div>
     </div>
-    <!-- Image -->
-    <div class="container_picture_methodology">
-      <img 
-        src="static/Pictures/Methodology_picture_man.png" 
-        alt="Methodology Picture" 
-        width="200" 
-        height="250" 
-        style="flex-shrink: 0;" 
-      />
-    </div>
+
   </div>
 </section>
+
         
            
 
@@ -121,5 +128,5 @@
     </div>
   </div>
 </section>
-<link rel="stylesheet" href="{{ url_for('static', filename='methodology.css') }}">
+
 {% endblock content %}

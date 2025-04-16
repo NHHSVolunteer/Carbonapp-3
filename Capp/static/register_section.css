@@ -5,8 +5,8 @@
   
   /* Klasse for å kontrollere bredden på skjemaet og sentrere det */
   .form-wrapper {
-    max-width: 900px;  /* Juster maks-bredden etter ønske */
-    min-width: 500px;  /* Valgfritt, for å unngå at det blir for smalt */
+    max-width: 100%;  /* Juster maks-bredden etter ønske */
+      /* Valgfritt, for å unngå at det blir for smalt */
     margin: 0 auto;    /* Sentrer boksen horisontalt */
   }
   
@@ -121,6 +121,38 @@ legend {
 
 .move-right {
   transform: translateX(2in); /* Adjust this value if needed */
+}
+
+.form-control {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+* {
+  outline: 1px solid red;
+}
+
+@media (max-width: 768px) {
+  .form-wrapper {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .box {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    padding: 1.5rem;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 

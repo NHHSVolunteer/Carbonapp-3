@@ -4,13 +4,13 @@ body {
 }
 
 .section_header_methodology {
-    background-color: #e9edd8; /* Matches the section background */
-    height: 45vh; /* Ensures the section fills the full viewport height */
-    display: flex; /* Enables flexbox for alignment */
-    align-items: top; /* Centers content vertically */
-    justify-content: space-between; /* Adds space between text and image */
-    box-sizing: border-box; /* Includes padding in height/width calculations */
-    font-size: 0px;
+    background-color: #e9edd8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    font-size: initial;
 }
 .section_header_methodology h1 {
     font-size: 40px; /* Increases font size for the headline */
@@ -21,26 +21,66 @@ body {
     margin-bottom: 0px; /* Removes extra margin below the headline */
 }
 .section_header_methodology p {
-    font-size: 18px; /* Information text */
+    font-size: 20px; /* Information text */
     line-height: 1.5; /* Improves readability*/
-    margin: 22px; /* Adds spacing around the paragraph */
+    margin: 1rem 0; /* Adds spacing around the paragraph */
 }
-.flex_container_methodology_2 {/* Flexbox for the image and text */
+.flex_container_methodology_2 {
     display: flex;
-    justify-content: center; 
-    margin: 20px;
-    padding-top: 22px;
-    padding-bottom: 20px;
-    text-align: center;
-    background-color:#AFCB98;
-    border-radius: 15px; /* Adds rounded corners to the section */
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    background-color: #AFCB98;
+    border-radius: 15px;
+    gap: 2rem;
+    flex-wrap: wrap;
   }
-.section_header_methodology .container_buttons_links_header {
-    margin-top: -45px; /* Moves the buttons upward */
-    margin-left: 1000px; /* Moves the buttons to the right */
-    display: flex; /* Ensures buttons are aligned properly */
-    justify-content: center; 
+
+  .image_buttons_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .container_buttons_links_header {
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+  }
+  
+  .container_buttons_links_header .btn {
+    width: 170px; /* make both buttons same width */
+    text-align: center;
+    border-radius: 20px;
+  }
+  
+  .container_buttons_links_header .btn a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+  }
+
+.container_buttons_links_header .btn:hover,
+.container_buttons_links_header .btn:focus {
+    opacity: 0.7;
 }
+
+.container_text_methodology {
+    flex: 1;
+    min-width: 855px;
+  }
+  
+  .image_buttons_wrapper {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
 .section_methodology_main_text {
     display: flex;
     flex-direction: column; /* Stacks smaller boxes vertically */
@@ -115,4 +155,89 @@ body {
     gap: 10px; /* Adds spacing between grid items */
     padding: 0 65px;
     box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .section_header_methodology {
+        text-align: center;
+        padding: 1rem 0;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        margin-left: 17px;
+    }
+
+    .section_header_methodology h1 {
+        font-size: 28px;
+        line-height: 1.3;
+        padding: 0 0.5rem;
+    }
+
+    .section_header_methodology p {
+        font-size: 16px;
+        padding: 0 1rem;
+    }
+
+    .container_buttons_links_header {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .container_buttons_links_header .btn {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .section_methodology_main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container_picture_methodology img {
+        max-width: 150px;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    .container_text_methodology {
+        min-width: unset;
+        width: 100%;
+        text-align: center;
+    }
+
+    .section_methodology_main_text h1,
+    .section_methodology_main_text h2 {
+        text-align: center;
+    }
+
+    .full_width h1 {
+        font-size: 24px;
+    }
+
+    .full_width p {
+        font-size: 16px;
+        padding: 0 0.5rem;
+    }
+
+    .grid_container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .small_box {
+        width: 90%;
+        max-width: 400px;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    .small_box p {
+        padding: 0 0.5rem;
+    }
 }
