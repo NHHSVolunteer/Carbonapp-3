@@ -38,6 +38,24 @@ p {
   font-size: 14px;
 }
 
+/* Button */
+.eco-btn {
+  background-color: #4b7f52;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  font-weight:500;
+  opacity: 0.7;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+.eco-btn:hover {
+  background-color: #5A6B50;
+  color: white;
+}
+
 /* Navbar  */
 .navbar {
   background-color: #3E4F59;
