@@ -1,11 +1,13 @@
+
+
+/* Welcome Section */
 .flex_container_welcome {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 100%; /* Øker bredden for mer luft */
-
-padding: 40px;
-background-color: #E6E9D3;
+  max-width: 100%;
+  padding: 40px;
+  background-color: #E6E9D3; /* Light green-gray */
 }
 
 .container_text {
@@ -13,17 +15,17 @@ background-color: #E6E9D3;
 }
 
 .container_text h1 {
-  font-size: 48px; /* Øker tittelstørrelsen */
+  font-size: 48px;
   font-weight: bold;
   line-height: 1.2;
-  color: #2f3e2f;
+  color: #2f3e2f; /* Dark green-gray */
   text-align: center;
 }
 
 .container_text p {
   font-size: 18px;
   line-height: 1.6;
-  color: #4A5C40; /* Litt mørkere grønn tekst */
+  color: #4A5C40; /* Slightly darker green */
 }
 
 .container_image {
@@ -34,49 +36,52 @@ background-color: #E6E9D3;
 
 .container_image img {
   width: 100%;
-  max-width: 200px; 
+  max-width: 200px;
   height: auto;
-
 }
 
+/* Purpose Section - Soft Olive Background */
 .flex_container_mission {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  max-width: 100%;    
-  padding-top: 22px;
-  padding-bottom: 20px;
+  max-width: 100%;
+  padding: 30px 20px;
   text-align: center;
-  background-color: azure;
+  background-color: #d9f2e6; /* Soft olive green */
+  color: #2e452e; /* Deep natural green for text */
 }
+
+
 
 .flex_container_methodology {
   display: flex;
-  justify-content: center; 
-  padding-top: 22px;
-  padding-bottom: 20px;
+  justify-content: center;
+  padding: 30px 20px;
   text-align: center;
-  background-color: tomato;
+  background-color: #fdf1cf; /* Light beige-yellow tone */
+  color: #2f2f1f; /* Dark neutral brown for strong readability */
 }
 
+
+/* Optional About Us Section */
 .flex_container_aboutUs {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  max-width: 100%;    
-  padding-top: 22px;
-  padding-bottom: 20px;
-  background-color: turquoise;
+  max-width: 100%;
+  padding: 22px 0;
+  background-color: #f0f5e1; /* Light natural tone */
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-  
-.flex_container, .flex_container_methodology, .flex_container_mission {
-      flex-direction: column; /* Endrer fra rad til kolonne */
-      text-align: center;
-      align-items: center;
+  .flex_container, .flex_container_methodology, .flex_container_mission {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
   }
 
   .flex_container_aboutUs {
@@ -84,57 +89,53 @@ background-color: #E6E9D3;
   }
 
   .container_text, .container_image {
-      width: 90%; /* Gjør innholdet bredere på mobil */
+    width: 90%;
   }
 
   .container_text h1 {
-      font-size: 32px; /* Reduser tittelstørrelse */
+    font-size: 32px;
   }
 
   .container_text p {
-      font-size: 16px; /* Mindre avsnittstekst */
+    font-size: 16px;
   }
 
   .container_image img {
-      max-width: 100%; /* Sørger for at bildet ikke blir for stort */
+    max-width: 100%;
+  }
+
+  .container_image {
+    order: 2;
+  }
+
+  .container_text {
+    order: 1;
+  }
+
+  .container_your_emissions {
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
 }
 
-.container_image {
-  order: 2;
-}
-
-.container_text {
-  order: 1;
-}
-
-.container_your_emissions {
-  margin-top: 0;
-  padding: 0;
-  margin: 0;
-  gap: 0;
-}
-
-
-}
-
-/* 🔹 Ekstra tilpasning for veldig små skjermer (f.eks. iPhone 5) */
+/* Extra small screen tweak */
 @media (max-width: 600px) {
   .text-content h1 {
-      font-size: 28px;
+    font-size: 28px;
   }
 
   .text-content p {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   .cta-btn {
-      font-size: 14px;
-      padding: 12px;
+    font-size: 14px;
+    padding: 12px;
   }
 }
 
-/* Comparison */
-
+/* Comparison Header */
 .comparison_header {
   align-items: center;
   justify-content: center;
@@ -143,35 +144,28 @@ background-color: #E6E9D3;
   margin-top: 30px;
 }
 
+/* Comparison Flex Layout */
 .flex_container_comparison {
-  margin-bottom: 15px;
   margin: 15px;
   justify-content: center;
-  gap: 8rem;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   align-items: flex-start;
 }
 
+/* Comparison Containers */
 .container_your_emissions,
 .container_world_emissions {
   flex: 1;
   min-width: 300px;
 }
 
-select {
-  padding: 0.5rem;
-  font-size: 1rem;
-  width: 200px;
-}
-
-
 .container_world_emissions {
   display: flex;
   flex-direction: column;
   max-width: 400px;
-  margin-bottom: 0rem;
+  margin-bottom: 0;
   text-align: center;
 }
 
@@ -181,13 +175,13 @@ select {
   background-color: #f9f9f9;
   text-align: center;
   max-width: 400px;
-  margin-top: 1rem;
+  margin-top: 38px;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
-  margin-top: 38px;
 }
 
+/* Form Elements */
 label {
   margin-bottom: 0.5rem;
   font-weight: bold;
@@ -196,9 +190,11 @@ label {
 select {
   padding: 0.5rem;
   font-size: 1rem;
+  width: 200px;
   margin-bottom: 1rem;
 }
 
+/* Output Boxes */
 .emissions-output {
   padding: 1rem;
   border: 1px solid #ccc;

@@ -1,10 +1,11 @@
 body {
-    background-color: #e9edd8; 
+    background-color: #eef2dc; 
     font-size: 18px;
 }
 
+/* Header Section */
 .section_header_methodology {
-    background-color: #e9edd8;
+    background-color: #eef2dc;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,55 +13,60 @@ body {
     padding: 2rem 1rem;
     font-size: initial;
 }
+
 .section_header_methodology h1 {
-    font-size: 40px; /* Increases font size for the headline */
-    line-height: 1.2; /* Improves readability with proper line spacing */
-    color: #2f3e2f; /* Sets text color to a darker green */
-    text-align: center; /* Centers the headline */
-    margin-top: 0px; /* Removes extra margin above the headline */
-    margin-bottom: 0px; /* Removes extra margin below the headline */
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #2f3e2f;
+    text-align: center;
+    margin: 0;
 }
+
 .section_header_methodology p {
-    font-size: 20px; /* Information text */
-    line-height: 1.5; /* Improves readability*/
-    margin: 1rem 0; /* Adds spacing around the paragraph */
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 1rem 0;
+    color: #3f4c30;
 }
+
+/* Green Box with Image + Buttons */
 .flex_container_methodology_2 {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 2rem;
-    background-color: #AFCB98;
+    background-color: #cde3bd;
     border-radius: 15px;
     gap: 2rem;
     flex-wrap: wrap;
-  }
+}
 
-  .image_buttons_wrapper {
+.image_buttons_wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-  }
+}
 
-  .container_buttons_links_header {
+.container_buttons_links_header {
     display: flex;
     justify-content: center;
     gap: 0.2rem;
-  }
-  
-  .container_buttons_links_header .btn {
-    width: 170px; /* make both buttons same width */
+}
+
+.container_buttons_links_header .btn {
+    width: 170px;
     text-align: center;
     border-radius: 20px;
-  }
-  
-  .container_buttons_links_header .btn a {
+}
+
+.container_buttons_links_header .btn a {
     display: inline-block;
     width: 100%;
     text-align: center;
     font-size: 18px;
-  }
+}
 
 .container_buttons_links_header .btn:hover,
 .container_buttons_links_header .btn:focus {
@@ -70,93 +76,97 @@ body {
 .container_text_methodology {
     flex: 1;
     min-width: 855px;
-  }
-  
-  .image_buttons_wrapper {
-    flex: 1;
-    min-width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
+}
 
+/* Main content section (big green box) */
 .section_methodology_main_text {
     display: flex;
-    flex-direction: column; /* Stacks smaller boxes vertically */
-    background-color: #AFCB98; /* Background color for the huge box */
-    margin: 20px; /* Adds spacing outside the huge box */
-    padding: 20px; /* Adds internal spacing inside the huge box */
-    border-radius: 15px; /* Rounds the edges*/
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow */
-    box-sizing: border-box; /* Ensures padding is included in the box size */
-}
-.formula { /* Formula text*/
-    font-size: 1.5em; /* Makes the formula text larger */
-    font-weight: bold; /* Makes the formula text bold */
-    text-align: center; /* Centers the formula */
-    margin: 20px 0; /* Adds spacing above and below the formula */
+    flex-direction: column;
+    background-color: #dbeac6;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
 }
 
-.small_box {/* Smaller boxes inside the large box */
-    background-color: #ffffff; /* Background color for smaller boxes */
-    margin: 10px; /* Adds spacing between smaller boxes */
-    padding: 50px; /* Adds internal spacing inside smaller boxes */
-    border-radius: 10px; /* Rounds the edges of smaller boxes */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*shadow */
-    text-align: center; /* Centers text inside the smaller boxes */
+/* Formula highlight */
+.formula {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Smaller white boxes */
+.small_box {
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    text-align: center;
     height: 310px;
     width: 100%;
-    font-size: 30px; /* Increases font size for all text inside the boxes */
-    line-height: 1.6; /* Improves readability with proper line spacing */
+    font-size: 30px;
+    line-height: 1.6;
 }
-.small_box img { /* Image inside the smaller boxes */
-    margin-top: -40px; /* Space above image negative moving it upwards */
-    margin-bottom: -20px; /*Space below the image negative allowing other entities closer*/
-    display: block; /* Ensure the image is treated as a block element */
-    margin-left: auto; /* Center the image horizontally */
+
+.small_box img {
+    margin-top: -40px;
+    margin-bottom: -20px;
+    display: block;
+    margin-left: auto;
     margin-right: auto;
 }
-.small_box h2 {/* Headline inside the smaller boxes */
-    display: block; /* Ensures the headline is displayed */
-    visibility: visible;
-    font-size: 25px; 
-    text-align: center;
-    color: #000000; 
+
+.small_box h2 {
+    font-size: 25px;
+    color: #2f3e2f;
     margin-top: 15px;
 }
-.small_box p {/* Text inside the smaller boxes */
-    font-size: 18px; /* Adjusts the font size*/
-    line-height: 1.6; /* Line spacing */
-    color: #000000; /* Black */
-    text-align: center; /* Center the paragraph text */
+
+.small_box p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+    text-align: center;
     margin-top: 5px;
 }
-.plane_box, .ferry_box {
-    height: 175px; /* Reduce the height for these specific boxes */
-    padding: 50px 30px; /* Adjust padding to fit the content */
+
+/* Specific smaller box tweaks */
+.plane_box,
+.ferry_box {
+    height: 175px;
+    padding: 50px 30px;
 }
-.full_width {/* Larger single boxes that span the full width */
-    width: 95%; /* Almost full width */
-    padding: 30px; /* Adds internal spacing inside the larger single boxes */
-    border-radius: 10px; /* Rounded edges */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*shadow */
-    margin: 10px auto; /* Adds spacing above and below the larger boxes */
-    box-sizing: border-box; /* Ensures padding is included in the box size */
-    font-size: 18px; 
+
+/* Full-width highlight box */
+.full_width {
+    width: 95%;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin: 10px auto;
+    box-sizing: border-box;
+    font-size: 18px;
 }
-.total_emissions_box h2, 
-.total_emissions_box p {
-    margin-top: -5px; /* Moves the text 5px upward */
-}
-.grid_container {/* Grid layout for smaller boxes */
+
+/* Grid layout */
+.grid_container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
-    gap: 10px; /* Adds spacing between grid items */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     padding: 0 65px;
     box-sizing: border-box;
 }
 
+.total_emissions_box h2,
+.total_emissions_box p {
+    margin-top: -5px;
+}
+
+/* Mobile styling */
 @media (max-width: 768px) {
     .section_header_methodology {
         text-align: center;
