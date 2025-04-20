@@ -17,6 +17,9 @@ from Capp.Carbon_app.forms import (
 )
 from Capp.Carbon_app.forms import QuickLogForm
 
+from collections import defaultdict
+import json
+
 # Create a Blueprint for the carbon app routes
 carbon_app = Blueprint('carbon_app', __name__)
 
@@ -262,7 +265,32 @@ def your_data():
         .filter(Transport.date > datetime.now() - timedelta(days=5)) \
         .order_by(Transport.date.desc(), Transport.transport.asc()) \
         .all()
-    return render_template('carbon_app/your_data.html', title='Your Data', entries=entries)
+   # Emissions by transport type
+    transport_emissions = defaultdict(float)
+    for entry in entries:
+        transport_emissions[entry.transport] += entry.co2
+
+    transport_labels = list(transport_emissions.keys())
+    transport_values = list(transport_emissions.values())
+
+    # Emissions over time (grouped by date)
+    daily_emissions = defaultdict(float)
+    for entry in entries:
+        date_str = entry.date.strftime("%Y-%m-%d")
+        daily_emissions[date_str] += entry.co2
+
+    daily_labels = sorted(daily_emissions.keys())
+    daily_values = [daily_emissions[date] for date in daily_labels]
+
+    return render_template(
+        'carbon_app/your_data.html',
+        entries=entries,
+        transport_labels=json.dumps(transport_labels),
+        transport_values=json.dumps(transport_values),
+        daily_labels=json.dumps(daily_labels),
+        daily_values=json.dumps(daily_values)
+    )
+
 
 # Route to delete a specific emission entry
 @carbon_app.route('/carbon_app/delete-emission/<int:entry_id>')

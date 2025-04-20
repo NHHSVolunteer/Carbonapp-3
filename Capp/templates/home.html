@@ -80,99 +80,87 @@
   </div>
 
 </section>
-
-<!-- Emissions Comparison Section -->
-<div class="comparison_header">
-  <h3>Compare your current emissions with the rest of the world</h3>
-</div>
-
-<br>
-
-<div class="flex_container_comparison">
-  
-  <!-- User's total emissions box -->
-  <div class="container_your_emissions">
-    <h5>See your emissions below</h5>
-    <br>
-    <p>Your total transport emissions: {{ user_total_emissions }} kg CO₂</p>
+{% if current_user.is_authenticated %}
+  <!-- Emissions Comparison Section -->
+  <div class="comparison_header">
+    <h3>Compare your current emissions with the rest of the world</h3>
   </div>
 
-  <!-- Country dropdown + emissions fact -->
-  <div class="container_world_emissions">
-    <label for="country">Country <span style="color: red;">*</span></label>
-    <select id="country" name="country" class="form-control">
-      <option value="">-- Select a country --</option>
-      <option value="Norway">Norway</option>
-      <option value="Sweden">Sweden</option>
-      <option value="Denmark">Denmark</option>
-      <option value="Finland">Finland</option>
-      <option value="USA">USA</option>
-      <option value="China">China</option>
-    </select>
+  <br>
 
-    <!-- Placeholder for selected country's emissions info -->
-    <div class="emissions-output" id="emissionsOutput">
-      Please select a country to view its carbon emissions.
+  <div class="flex_container_comparison">
+    
+    <!-- User's total emissions box -->
+    <div class="container_your_emissions">
+      <h5>See your emissions below</h5>
+      <br>
+      <p>Your total transport emissions: {{ user_total_emissions }} kg CO₂</p>
     </div>
+
+    <!-- Country dropdown + emissions fact -->
+    <div class="container_world_emissions">
+      <label for="country">Country <span style="color: red;">*</span></label>
+      <select id="country" name="country" class="form-control">
+        <option value="">-- Select a country --</option>
+        <option value="Norway">Norway</option>
+        <option value="Sweden">Sweden</option>
+        <option value="Denmark">Denmark</option>
+        <option value="Finland">Finland</option>
+        <option value="USA">USA</option>
+        <option value="China">China</option>
+      </select>
+
+      <!-- Placeholder for selected country's emissions info -->
+      <div class="emissions-output" id="emissionsOutput">
+        Please select a country to view its carbon emissions.
+      </div>
+    </div>
+
+    <!-- Text output for the comparison calculation -->
+    <div id="comparisonOutput" class="comparison-output">
+      Please select a country to compare your emissions
+    </div> 
+
+    <!-- Script to handle dropdown selection and output -->
+    <script>
+      const userEmissions = {{ user_total_emissions | tojson }};
+      const emissionsNumbers = {
+        Norway: 2236,
+        Sweden: 1400,
+        Denmark: 2038,
+        Finland: 1760,
+        USA: 5328,
+        China: 658
+      };
+      const emissionsData = {
+        Norway: "The average Norwegian emitted 2236 kg of CO₂ from transport in 2022.",
+        Sweden: "The average Swede emitted 1400 kg of CO₂ from transport in 2022.",
+        Denmark: "The average Dane emitted 2038 kg of CO₂ from transport in 2022.",
+        Finland: "The average Finn emitted 1760 kg of CO₂ from transport in 2022.",
+        USA: "The average American emitted 5328 kg of CO₂ from transport in 2022.",
+        China: "The average Chinese person emitted 658 kg of CO₂ from transport in 2022"
+      };
+
+      const dropdown = document.getElementById("country");
+      const output = document.getElementById("emissionsOutput");
+      const comparisonOutput = document.getElementById("comparisonOutput");
+
+      dropdown.addEventListener("change", function () {
+        const selectedCountry = this.value;
+        if (selectedCountry && emissionsData[selectedCountry]) {
+          output.textContent = emissionsData[selectedCountry];
+          const countryValue = emissionsNumbers[selectedCountry];
+          const percentage = ((userEmissions / countryValue) * 100).toFixed(2);
+          comparisonOutput.textContent = `Your current transport-emissions are ${percentage}% of the per person average yearly transport-emissions of ${selectedCountry}.`;
+        } else {
+          output.textContent = "Please select a country to view its carbon emissions.";
+          comparisonOutput.textContent = "Please select a country to compare your emissions";
+        }
+      });
+    </script>
+
   </div>
-
-  <!-- Text output for the comparison calculation -->
-  <div id="comparisonOutput" class="comparison-output">
-    Please select a country to compare your emissions
-  </div> 
-
-  <!-- Script to handle dropdown selection and output -->
-  <script>
-    // Get the user's emissions from Flask (in kg)
-    const userEmissions = {{ user_total_emissions | tojson }};
-
-    // Average emissions per person per country (converted to kg from tons)
-    const emissionsNumbers = {
-      Norway: 2.236 * 1000,
-      Sweden: 1.4 * 1000,
-      Denmark: 2.038 * 1000,
-      Finland: 1.76 * 1000,
-      USA: 5.328 * 1000,
-      China: 0.658 * 1000
-    };
-
-    // Descriptive emissions facts per country
-    const emissionsData = {
-      Norway: "The average Norwegian emitted 2236 kg of CO₂ from transport in 2022.",
-      Sweden: "The average Swede emitted 1400 kg of CO₂ from transport in 2022.",
-      Denmark: "The average Dane emitted 2038 kg of CO₂ from transport in 2022.",
-      Finland: "The average Finn emitted 1760 kg of CO₂ from transport in 2022.",
-      USA: "The average American emitted 5328 kg of CO₂ from transport in 2022.",
-      China: "The average Chinese person emitted 658 kg of CO₂ from transport in 2022"
-    };
-
-    // HTML references
-    const dropdown = document.getElementById("country");
-    const output = document.getElementById("emissionsOutput");
-    const comparisonOutput = document.getElementById("comparisonOutput");
-
-    // Event listener for dropdown selection
-    dropdown.addEventListener("change", function () {
-      const selectedCountry = this.value;
-
-      if (selectedCountry && emissionsData[selectedCountry]) {
-        // Display the fact for the selected country
-        const countryText = emissionsData[selectedCountry];
-        output.textContent = countryText;
-
-        // Calculate and display the percentage comparison
-        const countryValue = emissionsNumbers[selectedCountry];
-        const percentage = ((userEmissions / countryValue) * 100).toFixed(2);
-        comparisonOutput.textContent = `Your current transport-emissions are ${percentage}% of the per person average yearly transport-emissions of ${selectedCountry}.`;
-
-      } else {
-        // If no country is selected, show default messages
-        output.textContent = "Please select a country to view its carbon emissions.";
-        comparisonOutput.textContent = "Please select a country to compare your emissions";
-      }
-    });
-  </script>
-
-</div>
+{% endif %}
+``
 
 {% endblock content %}

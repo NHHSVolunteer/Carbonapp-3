@@ -2,10 +2,35 @@
 
 {% block head %}
   <!-- Link to your CSS file (e.g., register_section.css) -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/register_section.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='your_data.css') }}">
+
 {% endblock head %}
 
 {% block content %}
+<section class="carbon-stats-section py-5">
+  <!-- Heading centered above charts -->
+  <div class="carbon-stats-heading">
+    <h2>Your Data</h2>
+  </div>
+
+  <!-- Flexbox layout for charts -->
+  <div class="carbon-charts-container">
+    <!-- Chart 1 -->
+    <div class="chart-wrapper">
+      <canvas id="emissions_by_transport"></canvas>
+    </div>
+
+    <!-- Chart 2 -->
+    <div class="chart-wrapper">
+      <canvas id="emissions_over_time"></canvas>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 
 <!-- Table Section -->
 <section class="table_main py-4">
@@ -79,5 +104,77 @@
     </div>
   </div>
 </section>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<!-- Chart rendering -->
+<script>
+  // Get the JSON data passed from Flask
+  const transportLabels = {{ transport_labels | safe }};
+  const transportValues = {{ transport_values | safe }};
+  const dailyLabels = {{ daily_labels | safe }};
+  const dailyValues = {{ daily_values | safe }};
+
+  // === Emissions by Transport Type (Bar Chart) ===
+  const ctx1 = document.getElementById('emissions_by_transport').getContext('2d');
+  new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: transportLabels,
+      datasets: [{
+        label: 'Emissions (kg CO₂)',
+        data: transportValues,
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Emissions by Transport Type'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  // === Emissions Over Time (Line Chart) ===
+  const ctx2 = document.getElementById('emissions_over_time').getContext('2d');
+  new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: dailyLabels,
+      datasets: [{
+        label: 'Emissions (kg CO₂)',
+        data: dailyValues,
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        fill: true,
+        lineTension: 0.2
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Emissions Over the Last 5 Days'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+</script>
+
 
 {% endblock content %}
