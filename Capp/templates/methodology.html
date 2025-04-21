@@ -38,8 +38,11 @@
       <!-- BUTTONS BELOW IMAGE -->
       <div class="container_buttons_links_header">
         <div class="btn">
-          <a href="#" class="eco-btn btn-lg mr-2">Paper</a>
+          <a href="{{ url_for('static', filename='Report-FOR19.pdf') }}" class="eco-btn btn-lg mr-2" target="_blank">Paper</a>
         </div>
+
+       
+
         <div class="btn">
           <a href="{{url_for('carbon_app.carbon_app_home')}}" class="eco-btn btn-lg mr-2">Carbon App</a>
         </div>
