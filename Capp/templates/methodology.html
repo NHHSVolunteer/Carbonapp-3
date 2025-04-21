@@ -69,10 +69,17 @@
          the vehicle (if applicable).</p>
       <p>We have used the following numbers and formulas in our calculations:</p>
     </div>
-
+    <div class="small_box full_width car_mc_formula_box">
+      <h2>Example calculation for Cars and Motorbikes</h2>
+      <p>For cars and motorbikes the number of passengers (N) will
+         be a relevant factor. For example if we drive a Medium Diesel
+         Car for 100km and have three other passengers our pollution
+         per passenger would be:</p>
+      <p class="formula">\[ E = \frac{100km \cdot 160g/km}{4} = 4000g CO2 = 4kg CO2\]</p>
+    </div>
     <!-- Grid of smaller boxes -->
     <div class="grid_container">
-        <div class="small_box">
+        <div class="small_box Car_box">
           <img src="{{ url_for('static', filename='Pictures/Bil.svg') }}" width="75" height="75" alt="Car Icon">            
           <h2>Car</h2>
           <p><strong>Medium Diesel Car:</strong>160g CO2/km</p>
@@ -81,26 +88,33 @@
           <p><strong>Small Electric Car:</strong> 14g CO2/km</p>
           <p><em>Traffic significantly increases these numbers.</em></p>
         </div>
-        <div class="small_box">
-          <img src="{{ url_for('static', filename='Pictures/tog.svg') }}" width="75" height="75" alt="Train Icon">            
-            <h2>Train</h2>
-            <p><strong>Long Range Train:</strong> 31g CO2/km</p>
-            <p><strong>Local Train:</strong> 58g CO2/km</p>
-            <p><strong>Electric Train:</strong> 10g CO2/km</p>
-        </div>
-        <div class="small_box">
-          <img src="{{ url_for('static', filename='Pictures/Bus.svg') }}" width="75" height="75" alt="Bus Icon">
-          <h2>Bus</h2>
-          <p><strong>Diesel Bus:</strong> 27g CO2/km</p>
-          <p><strong>Electric Bus:</strong> 13g CO2/km</p>
-        </div>
-        <div class="small_box">
+        <div class="small_box MC_box">
           <img src="{{ url_for('static', filename='Pictures/Motorbike.svg') }}" width="75" height="75" alt="Motorcycle Icon">
           <h2>Motorbike</h2>
           <p><strong>Small Gasoline Motorbike:</strong> 82.77g CO2/km</p>
           <p><strong>Medium Gasoline Motorbike:</strong> 100.86g CO2/km</p>
           <p><strong>Large Gasoline Motorbike:</strong> 132.37g CO2/km</p>
       </div>
+      <div class="small_box full_width public_and_plane_formula_box">
+        <h2>Example calculation for Public transport and planes</h2>
+        <p>For public transport and commercial airplanes an the number of 
+          passengers (N) will not be a relevant factor as it has already 
+          been calculated per passenger. For example if we take a Diesel
+           Bus for 100km our pollution would be:</p>
+           <p class="formula">\[ E = 100km \cdot 27g/km \ = 2700g CO2 \ = 2.7kg CO2\]</p>      </div>
+        <div class="small_box Train_box">
+          <img src="{{ url_for('static', filename='Pictures/tog.svg') }}" width="75" height="75" alt="Train Icon">            
+            <h2>Train</h2>
+            <p><strong>Long Range Train:</strong> 31g CO2/km</p>
+            <p><strong>Local Train:</strong> 58g CO2/km</p>
+            <p><strong>Electric Train:</strong> 10g CO2/km</p>
+        </div>
+        <div class="small_box Bus_box">
+          <img src="{{ url_for('static', filename='Pictures/Bus.svg') }}" width="75" height="75" alt="Bus Icon">
+          <h2>Bus</h2>
+          <p><strong>Diesel Bus:</strong> 27g CO2/km</p>
+          <p><strong>Electric Bus:</strong> 13g CO2/km</p>
+        </div>
         <div class="small_box plane_box">
           <img src="{{ url_for('static', filename='Pictures/Airplane.svg') }}" width="75" height="75" alt="Airplane Icon">
             <h2>Airplane</h2>
@@ -114,7 +128,7 @@
         </div>
     </div>
 
-    <!-- Last full-width box -->
+    <!-- Last full-width boxes -->
     <div class="small_box full_width total_emissions_box">
       <h2>Total Carbon Emissions</h2>
       <p>To calculate the total carbon emissions from all the vehicles you have 
@@ -124,6 +138,32 @@
       <p>This number is further used to calculate how you are doing compared to the average 
         in Norway and as we expand it will be used to calculate how you are doing
          compared to the average other countries as well.
+      </p>
+    </div>
+    <div class="small_box full_width Average_emissions_box">
+      <h2>Comparative Pollution</h2>
+      <p>Using the calculated number TOTE,
+        we can compare your emissions to the national average 
+        of your country. We will here divide the total emission
+        number by the national average:</p>
+      <p class="formula">\[ \frac{TOTE}{\text{A}} \]</p>
+      <p>Where A = Average emissions in your country.</p>
+      <h4>The national averages we have already estimated are:</h4>
+      <p><strong>Norway:</strong> 2.248 tons CO2/year</p>
+      <p><strong>Sweden:</strong> 1.4 tons CO2/year</p>
+      <p><strong>Denmark:</strong> 2.038 tons CO2/year</p>
+      <p><strong>Finland:</strong> 1.76 tons CO2/year</p>
+      <p><strong>USA:</strong> 5.328 tons CO2/year</p>
+      <p><strong>China:</strong> 0.658 tons CO2/year</p>
+      <p><strong>With plans to expand to more countries in the near future!</strong></p>
+    </div>
+    <div class="small_box full_width Beef_and_jeans_box">
+      <h2>Beef and Jeans Equivalents</h2>
+      <p> We have also calculated your CO2 emissions equivalents in terms of pairs
+        of jeans as well as kg of beef. This helps vizualize the impact of your 
+        travel. The numbers we use are:</p>
+      <p><strong>1 pair of jeans:</strong> 33.4kg CO2</p>
+      <p><strong>1 kg of beef:</strong> 27kg CO2</p>
       </p>
     </div>
   </div>
