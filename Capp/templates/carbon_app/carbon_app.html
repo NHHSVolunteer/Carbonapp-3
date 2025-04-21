@@ -20,22 +20,22 @@
 
           <!-- Button linking to the methodology page (always visible) -->
           <div class="btn_wrapper">
-            <a href="{{ url_for('methodology.methodology_home') }}" class="btn btn-primary btn-lg">Methodology</a>
+            <a href="{{ url_for('methodology.methodology_home') }}" class="eco-btn btn-lg">Methodology</a>
           </div>
 
           {# Show these two buttons only if the user is logged in #}
           {% if current_user.is_authenticated %}
           <div class="btn_wrapper">
-            <a href="{{ url_for('carbon_app.your_data') }}" class="btn btn-primary btn-lg">Your Data</a>
+            <a href="{{ url_for('carbon_app.your_data') }}" class="eco-btn btn-lg">Your Data</a>
           </div>
           <div class="btn_wrapper">
-            <a href="{{ url_for('carbon_app.quick_log') }}" class="btn btn-primary btn-lg">Quick log</a>
+            <a href="{{ url_for('carbon_app.quick_log') }}" class="eco-btn btn-lg">Quick log</a>
           </div>
           {% endif %}
 
           <!-- Button to open the instructions modal -->
           <div class="btn_wrapper">
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#instructionsModal">
+            <button type="button" class="eco-btn btn-lg" data-toggle="modal" data-target="#instructionsModal">
               Instructions
             </button>
           </div>
@@ -105,7 +105,7 @@
             <div class="icon"><i class="fa-solid fa-car fa-3x"></i></div>
             <h3>Car</h3>
             <p>Please, enter your kilometers by using the car.</p>
-            <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_car') }}">New Entry</a>
+            <a class="btn eco-btn" href="{{ url_for('carbon_app.new_entry_car') }}">New Entry</a>
           </div>
         </div>
 
@@ -115,7 +115,7 @@
           <div class="icon"><i class="fa-solid fa-motorcycle fa-3x"></i></div>
           <h3>Motorbike</h3>
           <p>Please, enter your kilometers by using the motorbike.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_motorbike') }}">New Entry</a>
+          <a class="btn eco-btn" href="{{ url_for('carbon_app.new_entry_motorbike') }}">New Entry</a>
         </div>
       </div>
 
@@ -125,7 +125,7 @@
           <div class="icon"><i class="fa-solid fa-bus fa-3x"></i></div>
           <h3>Bus</h3>
           <p>Please, enter your kilometers by using the bus.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_bus') }}">New Entry</a>
+          <a class="btn eco-btn" href="{{ url_for('carbon_app.new_entry_bus') }}">New Entry</a>
         </div>
       </div>
 
@@ -136,7 +136,7 @@
           <div class="icon"><i class="fa-solid fa-train fa-3x"></i></div>
           <h3>Train</h3>
           <p>Please, enter your kilometers by using the train.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_train') }}">New Entry</a>
+          <a class="btn eco-btn" href="{{ url_for('carbon_app.new_entry_train') }}">New Entry</a>
         </div>
       </div>
 
@@ -148,7 +148,7 @@
           <div class="icon"><i class="fa-solid fa-plane fa-3x"></i></div>
           <h3>Plane</h3>
           <p>Please, enter your kilometers by using the plane.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_plane') }}">New Entry</a>
+          <a class="btn eco-btn" href="{{ url_for('carbon_app.new_entry_plane') }}">New Entry</a>
         </div>
       </div>
 
@@ -158,7 +158,7 @@
           <div class="icon"><i class="fa-solid fa-ship fa-3x"></i></div>
           <h3>Ferry</h3>
           <p>Please, enter your kilometers by using the ferry.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_ferry') }}">New Entry</a>
+          <a class="btn eco-btn" href="{{ url_for('carbon_app.new_entry_ferry') }}">New Entry</a>
         </div>
       </div>
 
@@ -169,7 +169,7 @@
           <div class="icon"><i class="fa-solid fa-bicycle fa-3x"></i></div>
           <h3>Bicycle</h3>
           <p>Please, enter your kilometers by using the bicycle.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_bicycle') }}">New Entry</a>
+          <a class="btn eco-btn" href="{{ url_for('carbon_app.new_entry_bicycle') }}">New Entry</a>
         </div>
       </div>
 
@@ -179,7 +179,7 @@
           <div class="icon"><i class="fa-solid fa-walking fa-3x"></i></div>
           <h3>Walk</h3>
           <p>Please, enter your kilometers by walking.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.new_entry_walk') }}">New Entry</a>
+          <a class="btn eco-btn" href="{{ url_for('carbon_app.new_entry_walk') }}">New Entry</a>
         </div>
       </div>
 
@@ -189,7 +189,7 @@
           <div class="icon"><i class="fa-solid fa-clock-rotate-left fa-3x"></i></div>
           <h3>Quick Log</h3>
           <p>Choose a trip from your saved list.</p>
-          <a class="btn btn-primary" href="{{ url_for('carbon_app.quick_log') }}">Go to saved list</a>
+          <a class="btn eco-btn" href="{{ url_for('carbon_app.quick_log') }}">Go to saved list</a>
         </div>
       </div>
 

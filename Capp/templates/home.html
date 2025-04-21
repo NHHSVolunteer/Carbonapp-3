@@ -21,24 +21,24 @@
         {% if current_user.is_authenticated %}
           <!-- Show app and quick log buttons if user is logged in -->
           <div class="btn">
-            <a href="{{ url_for('carbon_app.carbon_app_home') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
+            <a href="{{ url_for('carbon_app.carbon_app_home') }}" class="eco-btn btn-lg mr-2">
               Use the app!
             </a>
           </div>
           <div class="btn">
-            <a href="{{ url_for('carbon_app.quick_log') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
+            <a href="{{ url_for('carbon_app.quick_log') }}" class="eco-btn btn-lg mr-2">
               Quick log
             </a>
           </div>
         {% else %}
           <!-- Show register/login options if not logged in -->
           <div class="btn">
-            <a href="{{ url_for('users.register') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
+            <a href="{{ url_for('users.register') }}" class="eco-btn btn-lg mr-2">
               Register
             </a>
           </div>
           <div class="btn">
-            <a href="{{ url_for('users.login') }}" class="btn btn-primary btn-lg mr-2" style="background-color:#007bff;">
+            <a href="{{ url_for('users.login') }}" class="eco-btn btn-lg mr-2">
               Log in
             </a>
           </div>

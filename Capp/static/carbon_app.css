@@ -78,10 +78,15 @@
     margin-top: 10px;
     display: inline-block;
   }
-  
+   /* Entry button in Your Data （made by yuma）*/
+   .new-entry-btn {
+    width: auto;
+    display: inline-block;
+  }
   /* Egendefinert klasse for å flytte submit-knappen litt ned */
 .submit-margin {
     margin-top: 20px; /* Juster verdien etter behov */
+    display: inline-block;
   }
   
   /* Eksempel på eksisterende CSS for .form-wrapper hvis du ikke har denne definert enda */
