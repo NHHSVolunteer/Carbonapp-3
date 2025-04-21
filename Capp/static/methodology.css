@@ -133,13 +133,22 @@ body {
     text-align: center;
     margin-top: 5px;
 }
-
+/* Specific formula boxes tweaks */
+.car_mc_formula_box {
+    height: 250px;
+    padding: 50px 30px;
+}
+.Train_box, .Bus_box {
+    height: 250px;
+    padding: 50px 30px;
+}
 /* Specific smaller box tweaks */
 .plane_box,
 .ferry_box {
     height: 175px;
     padding: 50px 30px;
 }
+
 
 /* Full-width highlight box */
 .full_width {
@@ -160,9 +169,30 @@ body {
     padding: 0 65px;
     box-sizing: border-box;
 }
-
+.public_and_plane_formula_box {
+    grid-column: 1 / -1; /* Ensures it spans all columns in the grid */
+    width: 95%; /* Matches the width of other full-width boxes */
+    margin: 10px auto; /* Centers the box horizontally */
+    padding: 30px; /* Matches padding of other full-width boxes */
+    border-radius: 10px; /* Matches border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Matches shadow */
+    box-sizing: border-box; /* Ensures consistent box-sizing */
+    height: 250px;
+}
 .total_emissions_box h2,
-.total_emissions_box p {
+.total_emissions_box p,
+.Average_emissions_box h2,
+.Average_emissions_box p{
+    margin-top: -5px;
+}
+.Average_emissions_box{
+    height: 525px;
+}
+.Beef_and_jeans_box{
+    height: 215px;
+}
+.Beef_and_jeans_box h2,
+.Beef_and_jeans_box p{
     margin-top: -5px;
 }
 
