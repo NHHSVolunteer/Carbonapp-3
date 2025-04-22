@@ -1,55 +1,47 @@
-# Import necessary Flask extensions
+import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy  # For database management
+from flask_sqlalchemy import SQLAlchemy  # Handles database operations (ORM)
 from flask_bcrypt import Bcrypt          # For hashing passwords securely
-from flask_login import LoginManager     # For managing user sessions
+from flask_login import LoginManager     # For managing user sessions and login states
 
-# Create instances of the extensions
-db = SQLAlchemy()          # Used for all database operations
-bcrypt = Bcrypt()          # Used to hash and check passwords
-login_manager = LoginManager()  # Handles login sessions
+# Create extension instances outside the app factory so we can use them globally
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
 
-# Set the default route where users are redirected if login is required
-login_manager.login_view = 'users.login'  # Flask will redirect to this view if @login_required fails
-login_manager.login_message_category = 'info'  # Flash message category (used in Bootstrap alert class)
+# Tell Flask-Login where to redirect users who aren’t logged in
+login_manager.login_view = 'users.login'  # Refers to the login route in 'users' blueprint
+login_manager.login_message_category = 'info'  # Flash message category 
 
-# This function creates the full Flask application instance
 def create_app():
-    app = Flask(__name__)  # Create the Flask app object
+    # Create the actual Flask app object
+    app = Flask(__name__)
 
-    DBVAR = 'postgresql://postgres:Passord1@awseb-e-rnp7np9gr8-stack-awsebrdsdatabase-ploqwsbxmo0u.cj4ccg8qk3wp.eu-north-1.rds.amazonaws.com:5432/ebdb'
-    app.config['SQLALCHEMY_DATABASE_URI'] = DBVAR
-    app.config['SQLALCHEMY_BINDS']={'transport':DBVAR}
+    # Load environment variables safely using os.environ.get()
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev_secret_fallback')  # Keep sessions secure
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')  # Main database (PostgreSQL on AWS)
 
+    # Some configuration
+    app.config['SQLALCHEMY_BINDS'] = {
+        'transport': app.config['SQLALCHEMY_DATABASE_URI'] 
+    }
 
-    # Basic app configuration
-    app.config['SECRET_KEY'] = '3oueqkfdfas8ruewqndr8ewrewrouewrere44554'  # Used to keep sessions secure
-    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'  # Main database for user accounts
-
-    # Additional database (bound to the 'transport' key) for transport-related data
-    #app.config['SQLALCHEMY_BINDS'] = {
-     #   'transport': 'sqlite:///transport.db'
-    
-
-    # Initialize the extensions with the app
+    # Initialize all extensions with the Flask app instance
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
 
-    # Import and register all the different blueprints (modular app structure)
-    from Capp.home.routes import home                     # Homepage routes
-    from Capp.Methodology.route import methodology        # Methodology info page
-    from Capp.Carbon_app.routes import carbon_app         # Core app functionality (logging emissions)
-    from Capp.users.routes import users                   # Registration and login system
-    from Capp.About_us.routes import About_us             # Team information
+    # Import and register all the blueprints (modular parts of the app)
+    from Capp.home.routes import home
+    from Capp.Methodology.route import methodology
+    from Capp.Carbon_app.routes import carbon_app
+    from Capp.users.routes import users
+    from Capp.About_us.routes import About_us
 
-    # Register blueprints with the Flask app
     app.register_blueprint(home)
     app.register_blueprint(methodology)
     app.register_blueprint(carbon_app)
-    app.register_blueprint(About_us)
     app.register_blueprint(users)
+    app.register_blueprint(About_us)
 
-    
-
-    return app  # Return the configured app instance
+    return app  # Return the configured app
