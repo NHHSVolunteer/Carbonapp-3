@@ -14,4 +14,4 @@ About_us = Blueprint('About_us', __name__)
 def About_us_home():
     # This function returns an HTML page called "About_us.html"
     # It also passes a variable called 'title' to the HTML, which you can use in your template.
-    return render_template('About_us.html', title='About_us')
+    return render_template('about_us.html', title='About_us')
