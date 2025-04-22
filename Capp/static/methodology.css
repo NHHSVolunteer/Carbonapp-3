@@ -8,8 +8,6 @@ body {
     background-color: #eef2dc;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 2rem 1rem;
     font-size: initial;
 }
@@ -75,7 +73,7 @@ body {
 
 .container_text_methodology {
     flex: 1;
-    min-width: 855px;
+    min-width: 755px;
 }
 
 /* Main content section (big green box) */
@@ -207,6 +205,12 @@ body {
         margin-left: 17px;
     }
 
+    .flex_container_methodology_2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .section_header_methodology h1 {
         font-size: 28px;
         line-height: 1.3;
@@ -271,13 +275,26 @@ body {
     }
 
     .small_box {
-        width: 90%;
+        width: 95%;
         max-width: 400px;
         height: auto;
         margin-bottom: 1rem;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
     }
 
     .small_box p {
         padding: 0 0.5rem;
+        width: 90%;
+    }
+
+    .small_box .formula {
+        font-size: 12.5px;
+        text-align: left;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        margin: 20px;
     }
 }
