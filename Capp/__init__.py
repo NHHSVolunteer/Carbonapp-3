@@ -17,14 +17,19 @@ login_manager.login_message_category = 'info'  # Flash message category (used in
 def create_app():
     app = Flask(__name__)  # Create the Flask app object
 
+    DBVAR = 'postgresql://postgres:Passord1@awseb-e-rnp7np9gr8-stack-awsebrdsdatabase-ploqwsbxmo0u.cj4ccg8qk3wp.eu-north-1.rds.amazonaws.com:5432/ebdb'
+    app.config['SQLALCHEMY_DATABASE_URI'] = DBVAR
+    app.config['SQLALCHEMY_BINDS']={'transport':DBVAR}
+
+
     # Basic app configuration
     app.config['SECRET_KEY'] = '3oueqkfdfas8ruewqndr8ewrewrouewrere44554'  # Used to keep sessions secure
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'  # Main database for user accounts
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'  # Main database for user accounts
 
     # Additional database (bound to the 'transport' key) for transport-related data
-    app.config['SQLALCHEMY_BINDS'] = {
-        'transport': 'sqlite:///transport.db'
-    }
+    #app.config['SQLALCHEMY_BINDS'] = {
+     #   'transport': 'sqlite:///transport.db'
+    
 
     # Initialize the extensions with the app
     db.init_app(app)
@@ -44,5 +49,7 @@ def create_app():
     app.register_blueprint(carbon_app)
     app.register_blueprint(About_us)
     app.register_blueprint(users)
+
+    
 
     return app  # Return the configured app instance
