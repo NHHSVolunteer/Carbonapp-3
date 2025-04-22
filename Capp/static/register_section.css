@@ -1,41 +1,38 @@
-/* Egendefinert klasse for å flytte submit-knappen litt ned */
+/* Submit-button */
 .submit-margin {
-    margin-top: 20px; /* Juster verdien etter behov */
+    margin-top: 20px; 
   }
   
-  /* Klasse for å kontrollere bredden på skjemaet og sentrere det */
+  /* Form */
   .form-wrapper {
-    max-width: 100%;  /* Juster maks-bredden etter ønske */
-      /* Valgfritt, for å unngå at det blir for smalt */
-    margin: 0 auto;    /* Sentrer boksen horisontalt */
+    max-width: 100%;  
+    margin: 0 auto;    
   }
   
   
-  /*Under her kommer for "Your Data"
-
-
-  /* Sørg for at containeren som inneholder tabellen har posisjon relatert til sine innhold */
+  /* "Your Data" */
+ 
 .table-main-container {
   position: relative;
-  padding-top: 60px;  /* Legger til ekstra plass øverst for knappen */
+  padding-top: 60px;  
 }
 
-/* Ny styling for New Entry-knappen */
+/* New styling for New Entry-button */
 .new-entry-btn {
   position: absolute;
-  top: 10px;        /* Juster denne verdien for å plassere knappen vertikalt over tabellen */
-  right: 0;         /* Plasserer knappen helt til høyre */
-  z-index: 100;     /* Sørger for at knappen ligger over andre elementer */
+  top: 10px;        
+  right: 0;         /* Places the button all the way to the right*/
+  z-index: 100;     /* Ensures that the button is over the other elements*/
 }
 
-/* Generell container-styling */
+/* Container-styling */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-/* Eksempel på tabellstyling (kan tilpasses videre) */
+/* Table styling */
 .table {
   width: 100%;
   margin-top: 20px;
@@ -64,14 +61,14 @@
   background-color: #e9ecef;
 }
 
-/* Delete-knappen */
+/* Delete-button */
 .btn-outline-danger {
   padding: 5px 10px;
   font-size: 0.9em;
   border-radius: 3px;
 }
 
-/*Under dette har vi koden for "Log inn" siden
+/*Code for login-page
 
 /* Global container-styling */
 .container, .container-fluid {
@@ -82,13 +79,13 @@
 
 /* Login Section styling */
 .login_section {
-  background-color: #f8f9fa;  /* Lys bakgrunnsfarge */
+  background-color: #f8f9fa;  
   padding: 40px 0;
 }
 
-/* Form-wrapper for login/registrering */
+/* Form-wrapper for login/register */
 .form-wrapper {
-  max-width: 500px;       /* Juster bredden etter behov */
+  max-width: 500px;       
   margin: 0 auto;
   background-color: #ffffff;
   padding: 30px;
@@ -96,12 +93,12 @@
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Generell styling for form-grupper */
+/* Style for forms */
 .form-group {
   margin-bottom: 20px;
 }
 
-/* Stil for submit-knappen */
+/* Submit button */
 .btn-outline-info {
   border-radius: 5px;
   transition: background-color 0.3s ease;
@@ -120,7 +117,7 @@ legend {
 }
 
 .move-right {
-  transform: translateX(2in); /* Adjust this value if needed */
+  transform: translateX(2in); 
 }
 
 .form-control {

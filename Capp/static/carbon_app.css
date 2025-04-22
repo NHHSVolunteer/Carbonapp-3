@@ -1,4 +1,4 @@
-/* HEADER-SEKSJON (uendret) */
+/* HEADER-SECTION */
 .section_header_carbon_app {
     background-color: #E6E9D3;
     padding: 10px 0;
@@ -45,7 +45,7 @@
     display: inline-block;
   }
   
-  /* NEW ENTRY-SEKSJON */
+  /* NEW ENTRY-SECTION */
   .section_carbon_app_new_entry_main {
     padding: 40px 0;
     background-color: #f0f0f0;
@@ -83,17 +83,17 @@
     width: auto;
     display: inline-block;
   }
-  /* Egendefinert klasse for å flytte submit-knappen litt ned */
+  
 .submit-margin {
-    margin-top: 20px; /* Juster verdien etter behov */
+    margin-top: 20px; 
     display: inline-block;
   }
   
-  /* Eksempel på eksisterende CSS for .form-wrapper hvis du ikke har denne definert enda */
+
   .form-wrapper {
     max-width: 100%;
     min-width: 100%;
-    margin: 0 auto; /* Sentere boksen horisontalt */
+    margin: 0 auto; 
   }
   
   @media (max-width: 768px) {

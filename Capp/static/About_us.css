@@ -1,4 +1,4 @@
-/* Seksjon styling */
+/* Section styling */
 .about-us {
     padding: 50px 20px;
     text-align: center;
@@ -36,7 +36,7 @@
 
 
 .profile-card {
-    background-color: #AFCB98 ; /* Alternatively #C8D9B8 (same as footer) */
+    background-color: #AFCB98 ; 
     padding: 20px;
     border-radius: 15px;
     text-align: center;

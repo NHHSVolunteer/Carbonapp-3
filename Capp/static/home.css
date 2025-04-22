@@ -7,7 +7,7 @@
   align-items: center;
   max-width: 100%;
   padding: 40px;
-  background-color: #E6E9D3; /* Light green-gray */
+  background-color: #E6E9D3; 
 }
 
 .container_text {
@@ -18,14 +18,14 @@
   font-size: 48px;
   font-weight: bold;
   line-height: 1.2;
-  color: #2f3e2f; /* Dark green-gray */
+  color: #2f3e2f; 
   text-align: center;
 }
 
 .container_text p {
   font-size: 18px;
   line-height: 1.6;
-  color: #4A5C40; /* Slightly darker green */
+  color: #4A5C40; 
 }
 
 .container_image {
@@ -40,7 +40,7 @@
   height: auto;
 }
 
-/* Purpose Section - Soft Olive Background */
+/* Purpose Section  */
 .flex_container_mission {
   display: flex;
   justify-content: center;
@@ -49,8 +49,8 @@
   max-width: 100%;
   padding: 30px 20px;
   text-align: center;
-  background-color: #d9f2e6; /* Soft olive green */
-  color: #2e452e; /* Deep natural green for text */
+  background-color: #d9f2e6; 
+  color: #2e452e; 
 }
 
 
@@ -60,22 +60,10 @@
   justify-content: center;
   padding: 30px 20px;
   text-align: center;
-  background-color: #fdf1cf; /* Light beige-yellow tone */
-  color: #2f2f1f; /* Dark neutral brown for strong readability */
+  background-color: #fdf1cf; 
+  color: #2f2f1f; 
 }
 
-
-
-/* Optional About Us Section */
-.flex_container_aboutUs {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  max-width: 100%;
-  padding: 22px 0;
-  background-color: #f0f5e1; /* Light natural tone */
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
