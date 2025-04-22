@@ -31,17 +31,18 @@ def create_app():
     bcrypt.init_app(app)
     login_manager.init_app(app)
 
-    # Import and register all the blueprints (modular parts of the app)
-    from Capp.home.routes import home
-    from Capp.Methodology.route import methodology
-    from Capp.Carbon_app.routes import carbon_app
-    from Capp.users.routes import users
-    from Capp.About_us.routes import About_us
+      # Import and register all the different blueprints (modular app structure)
+    from Capp.home.routes import home                     # Homepage routes
+    from Capp.Methodology.route import methodology        # Methodology info page
+    from Capp.Carbon_app.routes import carbon_app         # Core app functionality (logging emissions)
+    from Capp.users.routes import users                   # Registration and login system
+    from Capp.About_us.routes import About_us             # Team information
 
+    # Register blueprints with the Flask app
     app.register_blueprint(home)
     app.register_blueprint(methodology)
     app.register_blueprint(carbon_app)
-    app.register_blueprint(users)
     app.register_blueprint(About_us)
-
+    app.register_blueprint(users)
+    
     return app  # Return the configured app
