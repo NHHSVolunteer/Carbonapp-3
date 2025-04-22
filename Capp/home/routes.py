@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Blueprint
 from Capp.models import Transport
 from flask_login import current_user
-from Capp import db  # Make sure db is imported
+from Capp import db 
 
 home = Blueprint('home', __name__)
 

@@ -26,7 +26,7 @@ carbon_app = Blueprint('carbon_app', __name__)
 # Dictionary: CO₂ emissions per vehicle type in grams per passenger-kilometer (g/pkm)
 co2_emissions_per_km = {
     'Plane': {
-        'Commercial Airplane': 251    
+        'Commercial Airplane': 236      
     },
     'Ferry': {
         'Standard': 123
@@ -110,8 +110,8 @@ def handle_form_submission(form, transport):
         db.session.commit()
 
         # Comparison values for jeans and beef
-        jeans_eq = round(co2 / 33, 2)   # 33 kg CO₂ per pair of jeans src: 
-        beef_eq = round(co2 / 27, 2)    # 27 kg CO₂ per kg beef src: 
+        jeans_eq = round(co2 / 33.4, 2)   # 33,4 kg CO₂ per pair of jeans 
+        beef_eq = round(co2 / 27, 2)    # 27 kg CO₂ per kg beef 
 
         # Create a comparison message
         comparison_message = (
@@ -229,7 +229,7 @@ def quick_log():
         db.session.commit()
 
         # Create a helpful comparison message for the user
-        jeans_eq = round(co2 / 33, 2)  # Average emissions to make one pair of jeans
+        jeans_eq = round(co2 / 33.4, 2)  # Average emissions to make one pair of jeans
         beef_eq = round(co2 / 27, 2)   # Average emissions to produce one kg of beef
 
         comparison_message = (

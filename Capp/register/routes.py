@@ -15,5 +15,4 @@ def register_home():
     form = RegistrationForm()
 
     # Render the template and send it the form object.
-    # 'title' is passed to the template for display purposes.
     return render_template('Registration/register.html', title='register', form=form)

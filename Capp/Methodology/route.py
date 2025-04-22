@@ -10,5 +10,4 @@ methodology = Blueprint('methodology', __name__)
 def methodology_home():
     # This function will be called when someone visits the /methodology URL
     # It returns the rendered 'methodology.html' page from your templates folder
-    # The "title" is passed into the HTML template and can be used in the <title> tag or elsewhere
     return render_template('methodology.html', title='methodology')

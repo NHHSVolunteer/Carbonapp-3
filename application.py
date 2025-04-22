@@ -5,7 +5,5 @@ from Capp import create_app
 application = create_app()
 
 # Run the application in development mode with debug enabled
-# This means the server will automatically reload if you make changes to the code,
-# and it will show detailed error messages in the browser when things go wrong.
 if __name__ == '__main__':
     application.run(debug=True)
